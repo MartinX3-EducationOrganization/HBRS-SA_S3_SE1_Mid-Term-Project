@@ -1,0 +1,23 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <JavaCodeStyleSettings>
+      <option name="GENERATE_FINAL_LOCALS" value="true" />
+      <option name="GENERATE_FINAL_PARAMETERS" value="true" />
+      <option name="JD_ADD_BLANK_AFTER_PARM_COMMENTS" value="true" />
+      <option name="JD_ADD_BLANK_AFTER_RETURN" value="true" />
+      <option name="JD_DO_NOT_WRAP_ONE_LINE_COMMENTS" value="true" />
+      <option name="JD_PARAM_DESCRIPTION_ON_NEW_LINE" value="true" />
+    </JavaCodeStyleSettings>
+    <codeStyleSettings language="JAVA">
+      <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
+      <option name="WRAP_COMMENTS" value="true" />
+      <indentOptions>
+        <option name="LABEL_INDENT_ABSOLUTE" value="true" />
+        <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
