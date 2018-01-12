@@ -10,8 +10,8 @@ public class UserStory {
     private int risiko;     // 1-5
     private int aufwand;
     private String epic;
-
-    public UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) {
+    
+    UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) {
         this.description = description;
         this.details = details;
         this.akzeptanz = akzeptanz;
@@ -99,6 +99,11 @@ public class UserStory {
     public void setEpic(String e) {
         epic = e;
     }
-
+    
+    @Override
+    public String toString() {
+        return "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
+                + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand + "\n" + "-----------------------------------------------------------------------------------------------------------------" + "\n";
+    }
 
 }
