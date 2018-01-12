@@ -9,7 +9,6 @@ public class UserStory {
     private int strafe;     // 1-5
     private int risiko;     // 1-5
     private int aufwand;
-    private double prio;
     private String epic;
 
     public UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) {
