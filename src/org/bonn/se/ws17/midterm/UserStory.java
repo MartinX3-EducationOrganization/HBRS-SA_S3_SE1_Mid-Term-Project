@@ -1,6 +1,3 @@
-/**
- * @author rjourd2s
- */
 package org.bonn.se.ws17.midterm;
 
 public class UserStory {
@@ -16,7 +13,6 @@ public class UserStory {
     private String epic;
 
     public UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) {
-
         this.description = description;
         this.details = details;
         this.akzeptanz = akzeptanz;
@@ -54,55 +50,55 @@ public class UserStory {
     public int getMehrwert() {
         return mehrwert;
     }
-
-    public void setMehrwert(int mehrwert) throws Exception {
-        if (mehrwert < 0 || mehrwert > 5) {
+    
+    public void setMehrwert(int m) throws Exception {
+        if (m < 1 || m > 5) {
             throw new Exception("Der Mehrwert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
-        this.mehrwert = mehrwert;
+        mehrwert = m;
     }
 
     public int getRisiko() {
         return risiko;
     }
-
-    public void setRisiko(int risiko) throws Exception {
-        if (risiko < 0 || risiko > 5) {
+    
+    public void setRisiko(int r) throws Exception {
+        if (r < 1 || r > 5) {
             throw new Exception("Das Risiko liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
-        this.risiko = risiko;
+        risiko = r;
     }
 
     public int getStrafe() {
         return strafe;
     }
-
-    public void setStrafe(int strafe) throws Exception {
-        if (strafe < 0 || strafe > 5) {
+    
+    public void setStrafe(int s) throws Exception {
+        if (s < 1 || s > 5) {
             throw new Exception("Der Strafe-Wert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
-        this.strafe = strafe;
+        strafe = s;
     }
 
     public int getAufwand() {
         return aufwand;
     }
-
-    public void setAufwand(int aufwand) {
-        this.aufwand = aufwand;
+    
+    public void setAufwand(int a) {
+        aufwand = a;
     }
-
-    /* Fragwürdig.
+    
+    
     public double getPrio() {
-        return prio;
-    }*/
+        return Utils.calcPrio(mehrwert, strafe, risiko, aufwand);
+    }
 
     public String getEpic() {
         return epic;
     }
-
-    public void setEpic(String epic) {
-        this.epic = epic;
+    
+    public void setEpic(String e) {
+        epic = e;
     }
 
 
