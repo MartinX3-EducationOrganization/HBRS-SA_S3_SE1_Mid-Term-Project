@@ -10,12 +10,17 @@ public class Main {
         List<UserStory> UserStories = new LinkedList<>();
         Scanner sc = new Scanner(System.in);
         while (input) {
-            UserStories.add(EingabeUtil.eingabe());
+            try {
+                UserStories.add(EingabeUtil.eingabe());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println("Möchten sie noch eine User-Story eingeben?(y/n)");
             String a = sc.next();
             if (a.equals("n") || a.equals("N")) {
                 input = false;
             } else if (a.equals("y") || a.equals("Y")) {
+                input = true;
             }
         
         }

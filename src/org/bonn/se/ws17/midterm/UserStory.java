@@ -11,38 +11,38 @@ public class UserStory {
     private int aufwand;
     private String epic;
     
-    UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) {
-        this.description = description;
-        this.details = details;
-        this.akzeptanz = akzeptanz;
-        this.mehrwert = mehrwert;
-        this.strafe = strafe;
-        this.risiko = risiko;
-        this.aufwand = aufwand;
-        this.epic = epic;
+    UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) throws Exception {
+        setDescription(description);
+        setDetails(details);
+        setAkzeptanz(akzeptanz);
+        setMehrwert(mehrwert);
+        setStrafe(strafe);
+        setRisiko(risiko);
+        setAufwand(aufwand);
+        setEpic(epic);
     }
 
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String description) {
+    
+    private void setDescription(String description) {
         this.description = description;
     }
 
     public String getDetails() {
         return details;
     }
-
-    public void setDetails(String details) {
+    
+    private void setDetails(String details) {
         this.details = details;
     }
 
     public String getAkzeptanz() {
         return akzeptanz;
     }
-
-    public void setAkzeptanz(String akzeptanz) {
+    
+    private void setAkzeptanz(String akzeptanz) {
         this.akzeptanz = akzeptanz;
     }
 
@@ -50,7 +50,7 @@ public class UserStory {
         return mehrwert;
     }
     
-    public void setMehrwert(int m) throws Exception {
+    private void setMehrwert(int m) throws Exception {
         if (m < 1 || m > 5) {
             throw new Exception("Der Mehrwert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
@@ -61,7 +61,7 @@ public class UserStory {
         return risiko;
     }
     
-    public void setRisiko(int r) throws Exception {
+    private void setRisiko(int r) throws Exception {
         if (r < 1 || r > 5) {
             throw new Exception("Das Risiko liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
@@ -72,7 +72,7 @@ public class UserStory {
         return strafe;
     }
     
-    public void setStrafe(int s) throws Exception {
+    private void setStrafe(int s) throws Exception {
         if (s < 1 || s > 5) {
             throw new Exception("Der Strafe-Wert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
@@ -83,7 +83,7 @@ public class UserStory {
         return aufwand;
     }
     
-    public void setAufwand(int a) {
+    private void setAufwand(int a) {
         aufwand = a;
     }
     
@@ -96,7 +96,7 @@ public class UserStory {
         return epic;
     }
     
-    public void setEpic(String e) {
+    private void setEpic(String e) {
         epic = e;
     }
     

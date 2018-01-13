@@ -12,7 +12,7 @@ public class EingabeUtil {
     private static int aufwand;
     private static String epic;
     
-    public static UserStory eingabe() {
+    public static UserStory eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("[]Willkommen in der USER-Story Eingabe[]\nUm eine User-Story einzugeben, folgen sie den Anweisungen.\n" +
                 "Geben Sie zunächste eine kurze Beschreibung ihrer Userstory ein:\n");
