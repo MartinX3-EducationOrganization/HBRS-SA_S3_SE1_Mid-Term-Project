@@ -17,18 +17,24 @@ public class Main {
                 e.printStackTrace();
             }
             System.out.println("Möchten sie noch eine User-Story eingeben?(y/n)");
-            String a = sc.next();
-            if (a.equals("n") || a.equals("N")) {
-                input = false;
-            } else if (a.equals("y") || a.equals("Y")) {
-                input = true;
+            while (sc.hasNext()) {
+                String a = sc.next();
+                if (a.equals("n") || a.equals("N")) {
+                    input = false;
+                    break;
+                } else if (a.equals("y") || a.equals("Y")) {
+                    input = true;
+                    break;
+                }
             }
-        
         }
         sc.close();
         System.out.println("Alle User-Stories:" + "\n");
         for (int i = 0; i < UserStories.toArray().length; i++) {
             System.out.println(UserStories.get(i));
+            if (i < (UserStories.toArray().length - 1)) {
+                System.out.println("---------------------------------------------------------");
+            }
         }
     
     }
