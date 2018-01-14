@@ -44,10 +44,10 @@ public class EingabeUtil {
         if (s.equals("Aufwand") && a > 0) {
             return a;
         } else if (s.equals("Aufwand")) {
-            System.out.println("Der Aufwand kann nicht negativ sein. Bitte geben sie eine positive Zahl ein.");
+            System.out.println("Der Aufwand muss ein Wert größer Null sein. Bitte geben sie den Wert neu ein.");
             return (checker(sc, s));
         } else if (a > 5 || a < 1) {
-            System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + s + "(Nur Werte von 1-5)");
+            System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + s + " (Nur Werte von 1-5)");
             return checker(sc, s);
         } else {
             return a;

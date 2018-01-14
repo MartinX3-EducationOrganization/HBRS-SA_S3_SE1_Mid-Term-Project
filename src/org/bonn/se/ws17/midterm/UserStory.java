@@ -104,7 +104,7 @@ public class UserStory {
     @Override
     public String toString() {
         return "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
-                + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand + "\n" + "-----------------------------------------------------------------------------------------------------------------" + "\n";
+                + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand;
     }
 
 }
