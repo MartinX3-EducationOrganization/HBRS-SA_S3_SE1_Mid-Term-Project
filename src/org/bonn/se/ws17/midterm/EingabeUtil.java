@@ -34,6 +34,11 @@ public class EingabeUtil {
     }
     
     private static int checker(Scanner sc, String s) {
+    
+        while (!sc.hasNextInt()) {
+            System.out.println("Bitte keine Zeichen eingeben nur ein Zahl von 1-5.");
+            sc.next();
+        }
         int a = sc.nextInt();
         if (a > 5 || a < 1) {
             System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + s + "(Nur Werte von 1-5)");
