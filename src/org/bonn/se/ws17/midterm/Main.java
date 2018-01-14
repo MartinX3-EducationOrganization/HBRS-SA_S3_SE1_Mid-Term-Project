@@ -9,6 +9,7 @@ public class Main {
         Boolean input = true;
         List<UserStory> UserStories = new LinkedList<>();
         Scanner sc = new Scanner(System.in);
+        System.out.println("[]Willkommen in der USER-Story Eingabe[]\nUm eine User-Story einzugeben, folgen sie den Anweisungen");
         while (input) {
             try {
                 UserStories.add(EingabeUtil.eingabe());
@@ -25,7 +26,10 @@ public class Main {
         
         }
         sc.close();
-        System.out.println("Alle User-Stories:");
-        System.out.println(UserStories.toString());
+        System.out.println("Alle User-Stories:" + "\n");
+        for (int i = 0; i < UserStories.toArray().length; i++) {
+            System.out.println(UserStories.get(i));
+        }
+    
     }
 }

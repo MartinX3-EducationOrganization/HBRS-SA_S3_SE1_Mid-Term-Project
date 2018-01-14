@@ -14,8 +14,7 @@ public class EingabeUtil {
     
     public static UserStory eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.print("[]Willkommen in der USER-Story Eingabe[]\nUm eine User-Story einzugeben, folgen sie den Anweisungen.\n" +
-                "Geben Sie zunächste eine kurze Beschreibung ihrer Userstory ein:\n");
+        System.out.println("Geben Sie zunächst eine kurze Beschreibung ihrer Userstory ein:");
         beschreibung = sc.nextLine();
         System.out.println("Geben Sie jetzt bitte ihre Details zur Userstory ein:");
         details = sc.nextLine();
@@ -24,13 +23,24 @@ public class EingabeUtil {
         System.out.println("Unter welcher Epic lässt sich ihre Userstory einordnen?");
         epic = sc.nextLine();
         System.out.println("Welchen Mehrwert erwarten Sie? (1-5)");
-        mehrwert = sc.nextInt();
+        mehrwert = checker(sc, "Mehrwert");
         System.out.println("Welchen Wert hat die Strafe? (1-5)");
-        strafe = sc.nextInt();
+        strafe = checker(sc, "Strafe");
         System.out.println("Wie hoch schätzen Sie das Risiko ein? (1-5)");
-        risiko = sc.nextInt();
-        System.out.println("Zu guter letzt wie hoch dürfte der Aufwand sein? (1-5)");
+        risiko = checker(sc, "Risiko");
+        System.out.println("Wie hoch dürfte der Aufwand sein?");
         aufwand = sc.nextInt();
-        return new UserStory(beschreibung, details, acceptCrit, mehrwert, strafe, risiko, aufwand, epic);
+        return new UserStory(beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
+    }
+    
+    private static int checker(Scanner sc, String s) {
+        int a = sc.nextInt();
+        if (a > 5 || a < 1) {
+            System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + s + "(Nur Werte von 1-5)");
+            return checker(sc, s);
+        } else {
+            return a;
+        }
+        
     }
 }

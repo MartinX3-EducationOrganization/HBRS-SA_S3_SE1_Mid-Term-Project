@@ -11,15 +11,16 @@ public class UserStory {
     private int aufwand;
     private String epic;
     
-    UserStory(String description, String details, String akzeptanz, int mehrwert, int strafe, int risiko, int aufwand, String epic) throws Exception {
+    UserStory(String description, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
         setDescription(description);
         setDetails(details);
         setAkzeptanz(akzeptanz);
+        setEpic(epic);
         setMehrwert(mehrwert);
         setStrafe(strafe);
         setRisiko(risiko);
         setAufwand(aufwand);
-        setEpic(epic);
+        
     }
 
     public String getDescription() {
