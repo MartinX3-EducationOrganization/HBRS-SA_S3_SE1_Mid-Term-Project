@@ -1,17 +1,14 @@
 package org.bonn.se.ws17.midterm;
 
 import java.rmi.NoSuchObjectException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class Container {
     private static Container container;
-    private final List<UserStory> liste;
+    private List<UserStory> liste;
     
     private Container() {
-        liste = new ArrayList<>();
+        changeListType(Modus.LIST_TYPE_ARRAY);
     }
     
     public static Container getContainer() {
@@ -19,6 +16,21 @@ public class Container {
             container = new Container();
         }
         return container;
+    }
+    
+    private void changeListType(Modus modus) {
+        switch (modus) {
+            case LIST_TYPE_ARRAY:
+                liste = new ArrayList<>();
+                break;
+            
+            case LIST_TYPE_LINKED:
+                liste = new LinkedList<>();
+                break;
+            
+            default:
+                throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht imnplementiert.");
+        }
     }
     
     public UserStory get(UUID id) {
