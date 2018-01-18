@@ -18,6 +18,14 @@ public class Container {
         return container;
     }
     
+    public void setListe(List<UserStory> liste) {
+        this.liste = liste;
+    }
+    
+    List<UserStory> listausgabe() {
+        return liste;
+    }
+    
     private void changeListType(Modus modus) {
         switch (modus) {
             case LIST_TYPE_ARRAY:
@@ -82,4 +90,5 @@ public class Container {
             }
         }
     }
+    
 }
