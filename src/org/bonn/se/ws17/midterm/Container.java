@@ -1,5 +1,8 @@
 package org.bonn.se.ws17.midterm;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 
@@ -18,6 +21,9 @@ public class Container {
         return container;
     }
     
+    private List<UserStory> get() {
+        return liste;
+    }
     public void setListe(List<UserStory> liste) {
         this.liste = liste;
     }
@@ -90,5 +96,54 @@ public class Container {
             }
         }
     }
+    
+    public void shell() throws ContainerException, IOException {
+        String strInput = null;
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
+            try {
+                strInput = input.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] strings = strInput.split(" ");
+            if (strings[0].equals("help")) {
+                System.out.print("Folgende Befehle stehen zur Verfuegung:" + "\n" +
+                        "'enter' > Eingabe der UserStory" + "\n" +
+                        "'store' > Speichert die UserStories auf den Datenträger." + "\n" +
+                        "'load' > Ladet die UserStories vom Datenträger." + "\n" +
+                        "'dump' > Sortiert die vorhanden UserStories und gibt diese aus." + "\n" +
+                        "'help' > Zeigt alle Commandos an.");
+            }
+            
+            if (strings[0].equals("dump")) {
+                Container container = Container.getContainer();
+                System.out.println("Userstories:");
+                List<UserStory> list = container.get();
+                Collections.sort(list);
+                for (UserStory us : list) {
+                    us.toString();
+                }
+            }
+            
+            if (strings[0].equals("load")) {
+                Utils.load();
+            }
+            
+            if (strings[0].equals("store")) {
+                Utils.store();
+            }
+            
+            if (strings[0].equals("enter")) {
+                try {
+                    Container.getContainer().add(EingabeUtil.eingabe());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+
     
 }
