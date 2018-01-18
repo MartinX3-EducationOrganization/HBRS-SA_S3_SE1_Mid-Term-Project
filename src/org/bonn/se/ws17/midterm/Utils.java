@@ -13,7 +13,7 @@ public class Utils {
         return prio;
     }
     
-    public void save() {
+    public static void store() {
         ObjectOutputStream oos = null;
         FileOutputStream fos = null;
         try {
@@ -35,7 +35,7 @@ public class Utils {
         
     }
     
-    public void load() {
+    public static void load() {
         ObjectInputStream ois = null;
         FileInputStream fis = null;
         try {
