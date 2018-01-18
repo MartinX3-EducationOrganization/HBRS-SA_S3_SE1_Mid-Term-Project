@@ -6,7 +6,7 @@ import java.util.UUID;
 public class UserStory implements Serializable, Comparable<UserStory> {
     
     private final UUID id;
-    private final double prio;
+    private final double prioritaet;
     private String description;
     private String details;
     private String akzeptanz;
@@ -24,7 +24,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         setRisiko(risiko);
         setAufwand(aufwand);
         id = UUID.randomUUID();
-        prio = getPrio();
+        prioritaet = getPrio();
     }
     
     public UUID getId() {return id;}
@@ -85,7 +85,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
 
     @Override
     public String toString() {
-        return "UserStoryID: " + id + "\n" + "Priorität: " + prio + "\n" + "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
+        return "UserStoryID: " + id + "\n" + "Priorität: " + prioritaet + "\n" + "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
                 + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand;
     }
     public String toString(String s) {
@@ -97,9 +97,9 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     @Override
     public int compareTo(UserStory o) {
-        if (prio == o.prio) {
+        if (prioritaet == o.prioritaet) {
             return 0;
-        } else if (prio < o.prio) {
+        } else if (prioritaet < o.prioritaet) {
             return 1;
         }
         return -1;
