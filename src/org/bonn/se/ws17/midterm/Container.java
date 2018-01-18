@@ -61,4 +61,13 @@ public class Container {
     public int anzahl() {
         return liste.size();
     }
+    
+    public void getall() {
+        for (int i = 0; i < liste.toArray().length; i++) {
+            System.out.println(liste.get(i));
+            if (i < (liste.toArray().length - 1)) {
+                System.out.println("---------------------------------------------------------");
+            }
+        }
+    }
 }
