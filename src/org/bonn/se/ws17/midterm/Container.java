@@ -30,7 +30,7 @@ public class Container {
                 break;
             
             default:
-                throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht imnplementiert.");
+                throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht implementiert.");
         }
     }
     
@@ -44,12 +44,12 @@ public class Container {
     }
     
     public void add(UserStory us) throws ContainerException {
+    
         if (!idVorhanden(us.getId())) {
             liste.add(us);
         } else {
-            throw new ContainerException(String.format("Das UserStory-Objekt mit der ID [%s] ist bereits vorhanden!", us.getId()));
+            throw new ContainerException(us.getId());
         }
-        
     }
     
     private boolean idVorhanden(UUID id) {
@@ -68,15 +68,6 @@ public class Container {
     
     public int size() {
         return liste.size();
-    }
-    
-    public void getall() {
-        for (int i = 0; i < liste.toArray().length; i++) {
-            System.out.println(liste.get(i));
-            if (i < (liste.toArray().length - 1)) {
-                System.out.println("---------------------------------------------------------");
-            }
-        }
     }
     
     public void clear() {
