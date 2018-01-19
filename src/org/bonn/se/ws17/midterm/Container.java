@@ -9,6 +9,7 @@ public class Container {
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
     }
+    
     public static Container getContainer() {
         if (container == null) {
             container = new Container();
@@ -16,14 +17,7 @@ public class Container {
         return container;
     }
     
-    List<UserStory> get() {
-        return liste;
-    }
-    public void setListe(List<UserStory> liste) {
-        this.liste = liste;
-    }
-    
-    List<UserStory> listausgabe() {
+    public List<UserStory> getList() {
         return liste;
     }
     
@@ -41,6 +35,7 @@ public class Container {
                 throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht imnplementiert.");
         }
     }
+    
     public UserStory get(UUID id) {
         Optional<UserStory> vorhanden = liste.stream().filter(entry -> entry.getId() == id).findFirst();
         if (vorhanden.isPresent()) {
@@ -68,17 +63,12 @@ public class Container {
         if (us.isPresent()) {
             UserStory entry = us.get();
             liste.remove(us);
-        }
-        throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", id));
-    }
-    
-    public void dump() {
-        for (UserStory us : liste) {
-            System.out.println(us.toString("id"));
+        } else {
+            throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", id));
         }
     }
     
-    public int anzahl() {
+    public int size() {
         return liste.size();
     }
     
@@ -89,5 +79,9 @@ public class Container {
                 System.out.println("---------------------------------------------------------");
             }
         }
+    }
+    
+    public void clear() {
+        liste.clear();
     }
 }

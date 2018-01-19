@@ -2,7 +2,6 @@ package org.bonn.se.ws17.midterm;
 
 import java.io.*;
 import java.util.List;
-import java.util.UUID;
 
 public class IOUtils {
     
@@ -14,8 +13,8 @@ public class IOUtils {
             oos = new ObjectOutputStream(fos);
             
             try {
-                oos.writeObject(Container.getContainer().listausgabe());
-                System.out.println(Container.getContainer().anzahl() + " User Stories wurden erfolgreich gespeichert!");
+                oos.writeObject(Container.getContainer().getList());
+                System.out.println(Container.getContainer().size() + " User Stories wurden erfolgreich gespeichert!");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -27,25 +26,30 @@ public class IOUtils {
     
     
     public static void load() {
-        ObjectInputStream ois;
-        FileInputStream fis;
-        try {
-            fis = new FileInputStream("UserStoryListe.ser");
-            ois = new ObjectInputStream(fis);
-            Object obj = ois.readObject();
-            if (obj instanceof List<?>) {
-                Container.getContainer().setListe((List<UserStory>) obj);
-                
-            }
-            System.out.println("Es wurden " + Container.getContainer().anzahl() + " User Stories erfolgreich reingeladen!");
-        } catch (IOException e) {
-            System.out.println("FEHLER: Datei konnte nicht gefunden werden!");
-        } catch (ClassNotFoundException e) {
-            System.out.println("FEHLER: Liste konnte nicht extrahiert werden (ClassNotFound)!");
-        }
-    }
+        Container container = Container.getContainer();
+        container.clear();
     
-    public void erledigt(UUID id, boolean b) {
-        Container.getContainer().get(id).setDone(b);
+        List<UserStory> userStories;
+        try {
+            try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {
+                try (ObjectInputStream ois = new ObjectInputStream(in)) {
+                    userStories = (List<UserStory>) (ois.readObject());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Fehler beim laden der Userstories.");
+            return;
+        }
+    
+        if (userStories != null) {
+            for (UserStory us : userStories) {
+                try {
+                    container.add(us);
+                } catch (ContainerException e) {
+                    System.out.println("Fehler beim laden der Userstories.");
+                    return;
+                }
+            }
+        }
     }
 }

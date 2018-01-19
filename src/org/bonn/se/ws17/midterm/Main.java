@@ -32,7 +32,7 @@ public class Main {
             if (strings[0].equals("dump")) {
                 Container container = Container.getContainer();
                 System.out.println("Userstories:");
-                List<UserStory> list = container.get();
+                List<UserStory> list = container.getList();
                 Collections.sort(list);
                 for (UserStory us : list) {
                     System.out.println(us.toString());

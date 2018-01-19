@@ -1,6 +1,7 @@
 package org.bonn.se.ws17.midterm;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class InputUtils {
     private static String beschreibung;
@@ -67,5 +68,9 @@ public class InputUtils {
         } else {
             return a;
         }
+    }
+    
+    public void erledigt(UUID id, boolean b) {
+        Container.getContainer().get(id).setDone(b);
     }
 }

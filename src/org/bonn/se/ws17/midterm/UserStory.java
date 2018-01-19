@@ -31,6 +31,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     }
     
     public UUID getId() { return id; }
+    
     public String getDescription() {
         return description;
     }
@@ -96,12 +97,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     public String toString() {
         return "UserStoryID: " + id + "\n" + "Priorität: " + prioritaet + "\n" + "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
                 + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand;
-    }
-    public String toString(String s) {
-        if (s.equals("id")) {
-            return "UserStoryID: " + id + "\n";
-        }
-        return null;
     }
     
     @Override
