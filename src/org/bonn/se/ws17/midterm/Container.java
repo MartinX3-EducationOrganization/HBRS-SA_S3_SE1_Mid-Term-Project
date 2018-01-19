@@ -9,11 +9,9 @@ import java.util.*;
 public class Container {
     private static Container container;
     private List<UserStory> liste;
-    
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
     }
-    
     public static Container getContainer() {
         if (container == null) {
             container = new Container();
@@ -46,7 +44,6 @@ public class Container {
                 throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht imnplementiert.");
         }
     }
-    
     public UserStory get(UUID id) {
         Optional<UserStory> vorhanden = liste.stream().filter(entry -> entry.getId() == id).findFirst();
         if (vorhanden.isPresent()) {
