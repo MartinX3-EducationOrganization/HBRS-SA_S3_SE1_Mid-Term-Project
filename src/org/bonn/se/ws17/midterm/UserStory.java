@@ -90,7 +90,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setAufwand(int a) { aufwand = a; }
     
-    private double getPrio() { return Utils.calcPrio(mehrwert, strafe, risiko, aufwand); }
+    private double getPrio() { return CalcUtils.calcPrio(mehrwert, strafe, risiko, aufwand); }
 
     @Override
     public String toString() {

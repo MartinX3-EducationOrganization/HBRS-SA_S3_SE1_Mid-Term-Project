@@ -4,15 +4,7 @@ import java.io.*;
 import java.util.List;
 import java.util.UUID;
 
-public class Utils {
-    public static double calcPrio(int mehrwert, int strafe, int risiko, int aufwand) {
-        double prio;
-        double temp;
-        prio = mehrwert + strafe;
-        temp = aufwand + risiko;
-        prio = prio / temp;
-        return prio;
-    }
+public class IOUtils {
     
     public static void store() {
         ObjectOutputStream oos;
@@ -33,14 +25,13 @@ public class Utils {
         
     }
     
+    
     public static void load() {
         ObjectInputStream ois;
         FileInputStream fis;
         try {
             fis = new FileInputStream("UserStoryListe.ser");
             ois = new ObjectInputStream(fis);
-            
-            // Auslesen der Liste
             Object obj = ois.readObject();
             if (obj instanceof List<?>) {
                 Container.getContainer().setListe((List<UserStory>) obj);

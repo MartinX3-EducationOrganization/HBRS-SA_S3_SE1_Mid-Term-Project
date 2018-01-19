@@ -1,34 +1,61 @@
 package org.bonn.se.ws17.midterm;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        Boolean input = true;
-        Container.getContainer();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("[]Willkommen in der USER-Story Eingabe[]\nUm eine User-Story einzugeben, folgen sie bitte den Anweisungen.");
-        while (input) {
+    public static void main(String[] args) throws NullPointerException {
+        System.out.println("Willkommen im UserStory-Programm:");
+        System.out.println("Hier können UserStories eingegeben werden, " + "\n" + "UserStories-Listen gespeichert, geladen und angezeigt werden.");
+        System.out.println("Für Hilfe der Kommandos, geben Sie bitte " + "'help'" + " ein.");
+        String strInput = null;
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
             try {
-                Container.getContainer().add(EingabeUtil.eingabe());
-            } catch (Exception e) {
+                strInput = input.readLine();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("Möchten sie noch eine User-Story eingeben?(y/n)");
-            while (sc.hasNext()) {
-                String a = sc.next();
-                if (a.equals("n") || a.equals("N")) {
-                    input = false;
-                    break;
-                } else if (a.equals("y") || a.equals("Y")) {
-                    input = true;
-                    break;
+            String[] strings = strInput.split(" ");
+            if (strings[0].equals("help")) {
+                System.out.print("Folgende Befehle stehen zur Verfuegung:" + "\n" +
+                        "'enter' > Eingabe der UserStory" + "\n" +
+                        "'store' > Speichert die UserStories auf den Datenträger." + "\n" +
+                        "'load' > Ladet die UserStories vom Datenträger." + "\n" +
+                        "'dump' > Sortiert die vorhanden UserStories und gibt diese aus." + "\n" +
+                        "'help' > Zeigt alle Commandos an." + "\n");
+            }
+            
+            if (strings[0].equals("dump")) {
+                Container container = Container.getContainer();
+                System.out.println("Userstories:");
+                List<UserStory> list = container.get();
+                Collections.sort(list);
+                for (UserStory us : list) {
+                    System.out.println(us.toString());
+                    System.out.println("---------------------------------------------------------");
                 }
             }
+            
+            if (strings[0].equals("load")) {
+                IOUtils.load();
+            }
+            
+            if (strings[0].equals("store")) {
+                IOUtils.store();
+            }
+            
+            if (strings[0].equals("enter")) {
+                try {
+                    InputUtils.eingabe();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        
+            }
         }
-        sc.close();
-        System.out.println("Alle User-Stories:" + "\n");
-        Container.getContainer().getall();
-    
     }
 }

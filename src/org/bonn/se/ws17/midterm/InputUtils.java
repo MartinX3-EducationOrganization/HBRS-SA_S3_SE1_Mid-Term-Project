@@ -2,7 +2,7 @@ package org.bonn.se.ws17.midterm;
 
 import java.util.Scanner;
 
-public class EingabeUtil {
+public class InputUtils {
     private static String beschreibung;
     private static String details;
     private static String acceptCrit;
@@ -12,7 +12,7 @@ public class EingabeUtil {
     private static int aufwand;
     private static String epic;
     
-    public static UserStory eingabe() throws Exception {
+    public static void eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Geben Sie zunächst eine kurze Beschreibung ihrer Userstory ein:");
         beschreibung = sc.nextLine();
@@ -30,7 +30,22 @@ public class EingabeUtil {
         risiko = checker(sc, "Risiko");
         System.out.println("Wie hoch dürfte der Aufwand sein?");
         aufwand = checker(sc, "Aufwand");
-        return new UserStory(beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
+        UserStory us = new UserStory(beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
+        try {
+            Container.getContainer().add(us);
+        } catch (ContainerException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Möchten sie noch eine User-Story eingeben?(y/n)");
+        while (sc.hasNext()) {
+            String a = sc.next();
+            if (a.toUpperCase().equals("N")) {
+                break;
+            } else if (a.toUpperCase().equals("Y")) {
+                eingabe();
+                break;
+            }
+        }
     }
     
     private static int checker(Scanner sc, String s) {
