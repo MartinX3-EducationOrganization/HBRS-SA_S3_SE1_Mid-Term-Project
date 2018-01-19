@@ -4,16 +4,13 @@ import java.rmi.NoSuchObjectException;
 import java.util.*;
 
 public class Container {
-    private static Container container;
+    private static Container container = new Container();
     private List<UserStory> liste;
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
     }
     
     public static Container getContainer() {
-        if (container == null) {
-            container = new Container();
-        }
         return container;
     }
     
