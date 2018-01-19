@@ -25,8 +25,8 @@ public class Main {
                 OutputUtils.dump();
             }
     
-            if (strings[0].equals("dumpDone")) {
-                OutputUtils.dumpDone();
+            if (strings[0].equals("dumpNotDone")) {
+                OutputUtils.dumpNotDone();
     
             }
             if (strings[0].equals("load")) {
