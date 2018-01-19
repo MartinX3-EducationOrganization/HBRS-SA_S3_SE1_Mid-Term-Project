@@ -4,7 +4,7 @@ import java.rmi.NoSuchObjectException;
 import java.util.*;
 
 public class Container {
-    private static Container container = new Container();
+    private static final Container container = new Container();
     private List<UserStory> liste;
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
