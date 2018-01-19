@@ -69,8 +69,4 @@ public class InputUtils {
             return a;
         }
     }
-    
-    public void erledigt(UUID id, boolean b) {
-        Container.getContainer().get(id).setDone(b);
-    }
 }
