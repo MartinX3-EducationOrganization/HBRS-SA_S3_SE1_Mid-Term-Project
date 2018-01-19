@@ -1,7 +1,6 @@
 package org.bonn.se.ws17.midterm;
 
 import java.util.Scanner;
-import java.util.UUID;
 
 public class InputUtils {
     private static String beschreibung;
