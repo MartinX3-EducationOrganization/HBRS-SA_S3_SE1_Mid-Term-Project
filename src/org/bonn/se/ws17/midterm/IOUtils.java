@@ -47,6 +47,7 @@ public class IOUtils {
                     return;
                 }
             }
+            System.out.println("UserStoires (" + Container.getContainer().size() + ") geladen.");
         }
     }
 }
