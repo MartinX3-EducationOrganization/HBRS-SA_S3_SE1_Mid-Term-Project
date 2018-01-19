@@ -14,8 +14,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private String epic;
     private boolean done;
     
-   
-    
     UserStory(String description, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
         setDescription(description);
         setDetails(details);
@@ -31,31 +29,17 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     }
     
     public UUID getId() { return id; }
-    
-    public String getDescription() {
-        return description;
-    }
-    
+    public String getDescription() { return description; }
     private void setDescription(String description) { this.description = description; }
-
-    public String getDetails() {
-        return details;
-    }
-    
+    public String getDetails() { return details; }
     private void setDetails(String details) { this.details = details; }
-
     public String getAkzeptanz() {
         return akzeptanz;
     }
-    
     private void setAkzeptanz(String akzeptanz) { this.akzeptanz = akzeptanz; }
-    
     public String getEpic() { return epic; }
-    
     private void setEpic(String e) { epic = e; }
-    
     public int getMehrwert() { return mehrwert; }
-
     private void setMehrwert(int m) throws Exception {
         if (m < 1 || m > 5) {
             throw new Exception("Der Mehrwert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
@@ -64,13 +48,8 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     }
     
     public boolean isDone() { return done;}
-    
-    public void setDone(boolean w) {
-        done = w;
-    }
-    
+    public void setDone(boolean w) { done = w; }
     public int getStrafe() { return strafe; }
-    
     private void setStrafe(int s) throws Exception {
         if (s < 1 || s > 5) {
             throw new Exception("Der Strafe-Wert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
@@ -79,7 +58,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     }
 
     public int getRisiko() { return risiko; }
-    
     private void setRisiko(int r) throws Exception {
         if (r < 1 || r > 5) {
             throw new Exception("Das Risiko liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
@@ -88,9 +66,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     }
     
     public int getAufwand() { return aufwand; }
-    
     private void setAufwand(int a) { aufwand = a; }
-    
     private double getPrio() { return CalcUtils.calcPrio(mehrwert, strafe, risiko, aufwand); }
 
     @Override
