@@ -22,11 +22,11 @@ public class Main {
             }
             
             if (strings[0].equals("dump")) {
-                OutputUtils.dump();
+                OutputUtils.dump(true);
             }
     
             if (strings[0].equals("dumpNotDone")) {
-                OutputUtils.dumpNotDone();
+                OutputUtils.dump(false);
     
             }
             if (strings[0].equals("load")) {
