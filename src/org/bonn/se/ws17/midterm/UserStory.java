@@ -47,8 +47,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         mehrwert = m;
     }
     
-    public boolean isDone() { return done;}
-    
+    public boolean isDone() { return done; }
     public void setDone(boolean w) { done = w; }
     public int getStrafe() { return strafe; }
     private void setStrafe(int s) throws Exception {
