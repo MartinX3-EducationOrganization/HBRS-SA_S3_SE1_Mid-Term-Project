@@ -12,7 +12,9 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private String akzeptanz;
     private int mehrwert, strafe, risiko, aufwand;    // 1-5
     private String epic;
+    private boolean done;
     
+   
     
     UserStory(String description, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
         setDescription(description);
@@ -25,9 +27,10 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         setAufwand(aufwand);
         id = UUID.randomUUID();
         prioritaet = getPrio();
+        done = false;
     }
     
-    public UUID getId() {return id;}
+    public UUID getId() { return id; }
     public String getDescription() {
         return description;
     }
@@ -59,6 +62,12 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         mehrwert = m;
     }
     
+    public boolean isDone() { return done;}
+    
+    public void setDone(boolean b) {
+        done = b;
+    }
+    
     public int getStrafe() { return strafe; }
     
     private void setStrafe(int s) throws Exception {
@@ -67,9 +76,9 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         }
         strafe = s;
     }
-    
-    public int getRisiko() { return risiko; }
 
+    public int getRisiko() { return risiko; }
+    
     private void setRisiko(int r) throws Exception {
         if (r < 1 || r > 5) {
             throw new Exception("Das Risiko liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
@@ -81,7 +90,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setAufwand(int a) { aufwand = a; }
     
-    public double getPrio() { return Utils.calcPrio(mehrwert, strafe, risiko, aufwand); }
+    private double getPrio() { return Utils.calcPrio(mehrwert, strafe, risiko, aufwand); }
 
     @Override
     public String toString() {

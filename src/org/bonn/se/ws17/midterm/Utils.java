@@ -2,6 +2,7 @@ package org.bonn.se.ws17.midterm;
 
 import java.io.*;
 import java.util.List;
+import java.util.UUID;
 
 public class Utils {
     public static double calcPrio(int mehrwert, int strafe, int risiko, int aufwand) {
@@ -14,8 +15,8 @@ public class Utils {
     }
     
     public static void store() {
-        ObjectOutputStream oos = null;
-        FileOutputStream fos = null;
+        ObjectOutputStream oos;
+        FileOutputStream fos;
         try {
             fos = new FileOutputStream("UserStoryListe.ser");
             oos = new ObjectOutputStream(fos);
@@ -28,16 +29,13 @@ public class Utils {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (oos != null) {try { oos.close(); } catch (IOException e) {}}
-            if (fos != null) {try { fos.close(); } catch (IOException e) {}}
         }
         
     }
     
     public static void load() {
-        ObjectInputStream ois = null;
-        FileInputStream fis = null;
+        ObjectInputStream ois;
+        FileInputStream fis;
         try {
             fis = new FileInputStream("UserStoryListe.ser");
             ois = new ObjectInputStream(fis);
@@ -53,9 +51,10 @@ public class Utils {
             System.out.println("FEHLER: Datei konnte nicht gefunden werden!");
         } catch (ClassNotFoundException e) {
             System.out.println("FEHLER: Liste konnte nicht extrahiert werden (ClassNotFound)!");
-        } finally {
-            if (ois != null) {try { ois.close(); } catch (IOException e) {}}
-            if (fis != null) {try { fis.close(); } catch (IOException e) {}}
         }
+    }
+    
+    public void erledigt(UUID id, boolean b) {
+        Container.getContainer().get(id).setDone(b);
     }
 }
