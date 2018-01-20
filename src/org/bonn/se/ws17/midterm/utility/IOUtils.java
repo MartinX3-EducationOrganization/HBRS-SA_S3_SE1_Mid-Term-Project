@@ -1,8 +1,8 @@
-package org.bonn.se.ws17.midterm.Utility;
+package org.bonn.se.ws17.midterm.utility;
 
-import org.bonn.se.ws17.midterm.Entity.UserStory;
-import org.bonn.se.ws17.midterm.Exception.ContainerException;
-import org.bonn.se.ws17.midterm.Model.Container;
+import org.bonn.se.ws17.midterm.entity.UserStory;
+import org.bonn.se.ws17.midterm.exception.ContainerException;
+import org.bonn.se.ws17.midterm.model.Container;
 
 import java.io.*;
 import java.util.List;

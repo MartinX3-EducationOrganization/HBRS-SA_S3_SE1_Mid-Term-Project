@@ -1,4 +1,4 @@
-package org.bonn.se.ws17.midterm.Exception;
+package org.bonn.se.ws17.midterm.exception;
 
 import java.util.UUID;
 

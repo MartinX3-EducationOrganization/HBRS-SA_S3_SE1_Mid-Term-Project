@@ -1,12 +1,12 @@
-package org.bonn.se.ws17.midterm.Controller;
+package org.bonn.se.ws17.midterm.controller;
 
-import View.OutputView;
-import org.bonn.se.ws17.midterm.DTO.UserStoryDTO;
-import org.bonn.se.ws17.midterm.Entity.UserStory;
-import org.bonn.se.ws17.midterm.Model.Container;
-import org.bonn.se.ws17.midterm.Utility.IOUtils;
-import org.bonn.se.ws17.midterm.Utility.InputUtils;
-import org.bonn.se.ws17.midterm.Utility.OutputUtils;
+import org.bonn.se.ws17.midterm.dto.UserStoryDTO;
+import org.bonn.se.ws17.midterm.entity.UserStory;
+import org.bonn.se.ws17.midterm.model.Container;
+import org.bonn.se.ws17.midterm.utility.IOUtils;
+import org.bonn.se.ws17.midterm.utility.InputUtils;
+import org.bonn.se.ws17.midterm.utility.OutputUtils;
+import org.bonn.se.ws17.midterm.view.OutputView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -66,14 +66,17 @@ public class Controller {
             if (strings[0].equals("store")) {
                 IOUtils.store();
             }
-            
+    
             if (strings[0].equals("enter")) {
                 try {
                     InputUtils.eingabe();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                
+        
+            }
+            if (strings[0].equals("exit")) {
+                break;
             }
         }
     }

@@ -1,7 +1,7 @@
-package org.bonn.se.ws17.midterm.DTO;
+package org.bonn.se.ws17.midterm.dto;
 
-import org.bonn.se.ws17.midterm.Entity.UserStory;
-import org.bonn.se.ws17.midterm.Utility.CalcUtils;
+import org.bonn.se.ws17.midterm.entity.UserStory;
+import org.bonn.se.ws17.midterm.utility.CalcUtils;
 
 import java.util.UUID;
 

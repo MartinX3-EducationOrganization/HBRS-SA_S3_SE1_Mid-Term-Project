@@ -1,4 +1,4 @@
-package org.bonn.se.ws17.midterm.Utility;
+package org.bonn.se.ws17.midterm.utility;
 
 public class CalcUtils {
     public static double calcPrio(int mehrwert, int strafe, int risiko, int aufwand) {

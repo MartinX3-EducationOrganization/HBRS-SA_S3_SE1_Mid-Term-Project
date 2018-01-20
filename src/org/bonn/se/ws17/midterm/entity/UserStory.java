@@ -1,6 +1,6 @@
-package org.bonn.se.ws17.midterm.Entity;
+package org.bonn.se.ws17.midterm.entity;
 
-import org.bonn.se.ws17.midterm.Utility.CalcUtils;
+import org.bonn.se.ws17.midterm.utility.CalcUtils;
 
 import java.io.Serializable;
 import java.util.UUID;

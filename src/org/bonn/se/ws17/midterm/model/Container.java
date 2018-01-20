@@ -1,8 +1,8 @@
-package org.bonn.se.ws17.midterm.Model;
+package org.bonn.se.ws17.midterm.model;
 
-import org.bonn.se.ws17.midterm.Entity.UserStory;
-import org.bonn.se.ws17.midterm.Exception.ContainerException;
+import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.enumerator.Modus;
+import org.bonn.se.ws17.midterm.exception.ContainerException;
 
 import java.rmi.NoSuchObjectException;
 import java.util.*;

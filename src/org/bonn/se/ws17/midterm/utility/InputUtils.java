@@ -1,8 +1,8 @@
-package org.bonn.se.ws17.midterm.Utility;
+package org.bonn.se.ws17.midterm.utility;
 
-import org.bonn.se.ws17.midterm.Entity.UserStory;
-import org.bonn.se.ws17.midterm.Exception.ContainerException;
-import org.bonn.se.ws17.midterm.Model.Container;
+import org.bonn.se.ws17.midterm.entity.UserStory;
+import org.bonn.se.ws17.midterm.exception.ContainerException;
+import org.bonn.se.ws17.midterm.model.Container;
 
 import java.util.Scanner;
 
@@ -76,8 +76,8 @@ public class InputUtils {
         }
     }
     
-    public static boolean checkFibonacci(int aufwandInt) {
-        int[] fibonacciZahlen = new int[]{1, 2, 3, 5, 8, 13, 20, 35, 50};
+    private static boolean checkFibonacci(int aufwandInt) {
+        int[] fibonacciZahlen = new int[]{1, 2, 3, 5, 8, 13, 21, 34, 55, 89,};
         for (int i = 0; i < fibonacciZahlen.length; i++) {
             if (aufwandInt == fibonacciZahlen[i]) {
                 return true;
