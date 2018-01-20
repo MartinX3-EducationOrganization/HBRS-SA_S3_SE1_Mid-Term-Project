@@ -63,16 +63,26 @@ public class InputUtils {
             sc.next();
         }
         int a = sc.nextInt();
-        if (s.equals("Aufwand") && a > 0) {
+        if (s.equals("Aufwand") && checkFibonacci(a)) {
             return a;
         } else if (s.equals("Aufwand")) {
-            System.out.println("Der Aufwand muss ein Wert größer Null sein. Bitte geben sie den Wert neu ein.");
+            System.out.println("Die Zahl " + a + " ist keine Fibonacci-Zahl." + "\n" + "Bitte korrigieren sie ihre Eingabe.");
             return (checker(sc, s));
         } else if (a > 5 || a < 1) {
-            System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + s + " (Nur Werte von 1-5)");
+            System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + a + " (Nur Werte von 1-5)");
             return checker(sc, s);
         } else {
             return a;
         }
+    }
+    
+    public static boolean checkFibonacci(int aufwandInt) {
+        int[] fibonacciZahlen = new int[]{1, 2, 3, 5, 8, 13, 20, 35, 50};
+        for (int i = 0; i < fibonacciZahlen.length; i++) {
+            if (aufwandInt == fibonacciZahlen[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
