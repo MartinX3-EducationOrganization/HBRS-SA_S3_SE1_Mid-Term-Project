@@ -49,14 +49,14 @@ public class Container {
     
     public void add(UserStory us) throws ContainerException {
     
-        if (!idVorhanden(us.getId())) {
+        if (!contains(us.getId())) {
             liste.add(us);
         } else {
             throw new ContainerException(us.getId());
         }
     }
     
-    public boolean idVorhanden(UUID id) {
+    public boolean contains(UUID id) {
         return liste.stream().anyMatch(x -> x.getId().equals(id));
     }
     

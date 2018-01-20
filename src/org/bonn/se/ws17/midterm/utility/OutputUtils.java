@@ -25,7 +25,7 @@ public class OutputUtils {
     public static void analyze(String s) {
         if (s.matches("[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}")) {
             UUID usid = UUID.fromString(s);
-            if (Container.getContainer().idVorhanden(usid)) {
+            if (Container.getContainer().contains(usid)) {
                 System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", s));
                 System.out.println("100% (sehr gut)"); // Hier kommt Methode zur Analyse.
             } else {
