@@ -1,4 +1,8 @@
-package org.bonn.se.ws17.midterm;
+package View;
+
+import org.bonn.se.ws17.midterm.Entity.UserStory;
+import org.bonn.se.ws17.midterm.Exception.ContainerException;
+import org.bonn.se.ws17.midterm.Model.Container;
 
 import java.util.Scanner;
 
@@ -11,12 +15,15 @@ public class InputUtils {
     private static int risiko;
     private static int aufwand;
     private static String epic;
+    private static String titel;
     
     public static void eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Geben Sie zunächst eine kurze Beschreibung ihrer Userstory ein:");
+        System.out.println("Geben Sie zunächst einen Titel für ihrer Userstory ein:");
+        titel = sc.nextLine();
+        System.out.println("Geben Sie eine kurze Beschreibung ihrer Userstory ein:");
         beschreibung = sc.nextLine();
-        System.out.println("Geben Sie jetzt bitte ihre Details zur Userstory ein:");
+        System.out.println("Geben Sie jetzt ihre Details zur Userstory ein:");
         details = sc.nextLine();
         System.out.println("Es folgen die Akzeptanzkriterien ihrer Userstory:");
         acceptCrit = sc.nextLine();
@@ -30,7 +37,7 @@ public class InputUtils {
         risiko = checker(sc, "Risiko");
         System.out.println("Wie hoch dürfte der Aufwand sein?");
         aufwand = checker(sc, "Aufwand");
-        UserStory us = new UserStory(beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
+        UserStory us = new UserStory(titel, beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
         try {
             Container.getContainer().add(us);
         } catch (ContainerException e) {
@@ -49,7 +56,7 @@ public class InputUtils {
     }
     
     private static int checker(Scanner sc, String s) {
-    
+        
         while (!sc.hasNextInt()) {
             System.out.println("Bitte geben sie keine Zeichen ein!");
             System.out.println("Geben sie einen Zahlenwert für " + s + " ein.");

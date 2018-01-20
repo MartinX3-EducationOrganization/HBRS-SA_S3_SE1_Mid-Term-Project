@@ -1,8 +1,4 @@
-package org.bonn.se.ws17.midterm;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+package View;
 
 public class OutputUtils {
     
@@ -20,21 +16,5 @@ public class OutputUtils {
                 "'dump' > Sortiert die vorhanden UserStories und gibt diese aus." + "\n" +
                 "'dumpNotDone' > Zeigt alle Userstories an die nocht nicht abgeschlossen sind." + "\n" +
                 "'help' > Zeigt alle Commandos an." + "\n");
-    }
-    
-    public static void dump(boolean b) {
-        Container container = Container.getContainer();
-        List<UserStory> liste;
-        System.out.println("Userstories:");
-        if (b) {
-            liste = container.getList();
-        } else {
-            liste = container.getList().stream().filter(x -> !x.isDone()).collect(Collectors.toList());
-        }
-        Collections.sort(liste);
-        for (UserStory us : liste) {
-            System.out.println(us.toString());
-            System.out.println("---------------------------------------------------------");
-        }
     }
 }

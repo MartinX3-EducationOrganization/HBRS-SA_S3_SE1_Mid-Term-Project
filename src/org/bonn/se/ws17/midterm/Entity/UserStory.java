@@ -1,4 +1,6 @@
-package org.bonn.se.ws17.midterm;
+package org.bonn.se.ws17.midterm.Entity;
+
+import org.bonn.se.ws17.midterm.Utility.CalcUtils;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -7,15 +9,19 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private final UUID id;
     private final double prioritaet;
-    private String description;
+    private String titel;
+    
+    
+    private String beschreibung;
     private String details;
     private String akzeptanz;
     private int mehrwert, strafe, risiko, aufwand;    // 1-5
     private String epic;
     private boolean done;
     
-    UserStory(String description, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
-        setDescription(description);
+    public UserStory(String titel, String beschreibung, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
+        setTitel(titel);
+        setBeschreibung(beschreibung);
         setDetails(details);
         setAkzeptanz(akzeptanz);
         setEpic(epic);
@@ -28,11 +34,15 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         done = false;
     }
     
+    public String getBeschreibung() { return beschreibung; }
+    
+    public void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
+    
     public UUID getId() { return id; }
     
-    public String getDescription() { return description; }
+    public String getTitel() { return titel; }
     
-    private void setDescription(String description) { this.description = description; }
+    private void setTitel(String titel) { this.titel = titel; }
     
     public String getDetails() { return details; }
     
@@ -69,7 +79,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         }
         strafe = s;
     }
-
+    
     public int getRisiko() { return risiko; }
     
     private void setRisiko(int r) throws Exception {
@@ -84,10 +94,10 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private void setAufwand(int a) { aufwand = a; }
     
     private double getPrio() { return CalcUtils.calcPrio(mehrwert, strafe, risiko, aufwand); }
-
+    
     @Override
     public String toString() {
-        return "UserStoryID: " + id + "\n" + "Priorität: " + prioritaet + "\n" + "Beschreibung: " + description + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
+        return "UserStoryID: " + id + "\n" + "Priorität: " + prioritaet + "\n" + "Beschreibung: " + titel + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
                 + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand;
     }
     

@@ -1,4 +1,8 @@
-package org.bonn.se.ws17.midterm;
+package View;
+
+import org.bonn.se.ws17.midterm.Entity.UserStory;
+import org.bonn.se.ws17.midterm.Exception.ContainerException;
+import org.bonn.se.ws17.midterm.Model.Container;
 
 import java.io.*;
 import java.util.List;
@@ -6,7 +10,7 @@ import java.util.List;
 public class IOUtils {
     
     public static void store() {
-    
+        
         try {
             try (FileOutputStream fos = new FileOutputStream("UserStoryListe.ser")) {
                 try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -19,13 +23,13 @@ public class IOUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
+        
     }
     
     public static void load() {
         Container container = Container.getContainer();
         container.clear();
-    
+        
         List<UserStory> userStories;
         try {
             try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {
@@ -37,7 +41,7 @@ public class IOUtils {
             System.out.println("Fehler beim laden der Userstories.");
             return;
         }
-    
+        
         if (userStories != null) {
             for (UserStory us : userStories) {
                 try {
