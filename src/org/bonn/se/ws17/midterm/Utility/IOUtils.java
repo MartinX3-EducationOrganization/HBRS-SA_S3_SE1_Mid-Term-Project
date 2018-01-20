@@ -1,4 +1,4 @@
-package View;
+package org.bonn.se.ws17.midterm.Utility;
 
 import org.bonn.se.ws17.midterm.Entity.UserStory;
 import org.bonn.se.ws17.midterm.Exception.ContainerException;

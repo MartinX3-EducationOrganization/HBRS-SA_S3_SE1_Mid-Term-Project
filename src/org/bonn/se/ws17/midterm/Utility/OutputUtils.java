@@ -1,4 +1,4 @@
-package View;
+package org.bonn.se.ws17.midterm.Utility;
 
 public class OutputUtils {
     

@@ -10,8 +10,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private final UUID id;
     private final double prioritaet;
     private String titel;
-    
-    
     private String beschreibung;
     private String details;
     private String akzeptanz;
@@ -36,7 +34,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     public String getBeschreibung() { return beschreibung; }
     
-    public void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
+    private void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     
     public UUID getId() { return id; }
     
@@ -94,12 +92,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private void setAufwand(int a) { aufwand = a; }
     
     private double getPrio() { return CalcUtils.calcPrio(mehrwert, strafe, risiko, aufwand); }
-    
-    @Override
-    public String toString() {
-        return "UserStoryID: " + id + "\n" + "Priorität: " + prioritaet + "\n" + "Beschreibung: " + titel + "\n" + "Details: " + details + "\n" + "Akzeptanzkriterien: " + akzeptanz + "\n" + "Epic: " + epic + "\n" + "Mehrwert: " + mehrwert + "\n" + "Strafe: "
-                + strafe + "\n" + "Risiko: " + risiko + "\n" + "Aufwand: " + aufwand;
-    }
     
     @Override
     public int compareTo(UserStory o) {
