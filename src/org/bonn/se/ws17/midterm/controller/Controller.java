@@ -46,6 +46,9 @@ public class Controller {
             }
             
             String[] strings = strInput.split(" ");
+            if (strings[0].equals("analyze")) {
+                OutputUtils.analyze(strings[1]);
+            }
             if (strings[0].equals("help")) {
                 OutputUtils.help();
             }

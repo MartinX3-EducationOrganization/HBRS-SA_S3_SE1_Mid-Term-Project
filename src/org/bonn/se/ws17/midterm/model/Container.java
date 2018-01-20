@@ -56,7 +56,7 @@ public class Container {
         }
     }
     
-    private boolean idVorhanden(UUID id) {
+    public boolean idVorhanden(UUID id) {
         return liste.stream().anyMatch(x -> x.getId().equals(id));
     }
     
