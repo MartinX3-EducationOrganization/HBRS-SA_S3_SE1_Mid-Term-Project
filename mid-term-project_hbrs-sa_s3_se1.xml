@@ -2,7 +2,7 @@
 <project name="mid-term-project_hbrs-sa_s3_se1" default="all">
   
   
-  <property file="build.properties"/>
+  <property file="mid-term-project_hbrs-sa_s3_se1.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
