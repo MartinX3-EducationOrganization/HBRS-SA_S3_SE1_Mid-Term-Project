@@ -10,6 +10,7 @@ import java.util.*;
 public class Container {
     private static final Container container = new Container();
     private List<UserStory> liste;
+    private List<String> actorList;
     
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
@@ -21,6 +22,10 @@ public class Container {
     
     public List<UserStory> getList() {
         return liste;
+    }
+    
+    public List<String> getActorList() {
+        return actorList;
     }
     
     private void changeListType(Modus modus) {
@@ -38,13 +43,18 @@ public class Container {
         }
     }
     
-    public UserStory get(UUID id) {
-        Optional<UserStory> vorhanden = liste.stream().filter(entry -> entry.getId() == id).findFirst();
+    public UserStory get(UUID uuid) {
+        Optional<UserStory> vorhanden = liste.stream().filter(x -> x.getId() == uuid).findFirst();
+        System.out.println(vorhanden.toString());
         if (vorhanden.isPresent()) {
-            UserStory entry = vorhanden.get();
             return vorhanden.get();
+        } else {
+            return null;
         }
-        return null;
+    }
+    
+    public void addActor(String s) {
+        actorList.add(s);
     }
     
     public void add(UserStory us) throws ContainerException {

@@ -13,7 +13,7 @@ public class UserStoryDTO implements Comparable<UserStoryDTO> {
     public UserStoryDTO(UserStory us) {
         id = us.getId();
         titel = us.getTitel();
-        prioritaet = CalcUtils.calcPrio(us.getMehrwert(), us.getStrafe(), us.getRisiko(), us.getAufwand());
+        prioritaet = CalcUtils.calcPrio(us.getMwert(), us.getStrafe(), us.getRisiko(), us.getAufwand());
     }
     
     public UUID getId() { return id; }

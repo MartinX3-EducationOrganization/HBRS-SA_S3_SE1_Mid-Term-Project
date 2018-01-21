@@ -9,28 +9,34 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private final UUID id;
     private final double prioritaet;
-    private String titel;
-    private String beschreibung;
-    private String details;
-    private String akzeptanz;
-    private int mehrwert, strafe, risiko, aufwand;    // 1-5
-    private String epic;
+    private String titel, beschreibung, details, akzeptanz, epic, actor, mehrwert;
+    private int mwert, strafe, risiko, aufwand;    // 1-5
     private boolean done;
     
-    public UserStory(String titel, String beschreibung, String details, String akzeptanz, String epic, int mehrwert, int strafe, int risiko, int aufwand) throws Exception {
+    public UserStory(String titel, String beschreibung, String details, String akzeptanz, String mehrwert, String epic, int mwert, int strafe, int risiko, int aufwand, String actor) throws Exception {
         setTitel(titel);
         setBeschreibung(beschreibung);
         setDetails(details);
         setAkzeptanz(akzeptanz);
-        setEpic(epic);
         setMehrwert(mehrwert);
+        setEpic(epic);
+        setMwert(mwert);
         setStrafe(strafe);
         setRisiko(risiko);
         setAufwand(aufwand);
+        setActor(actor);
         id = UUID.randomUUID();
         prioritaet = getPrio();
         done = false;
     }
+    
+    public String getMehrwert() { return mehrwert; }
+    
+    private void setMehrwert(String mehrwert) { this.mehrwert = mehrwert; }
+    
+    public String getActor() { return actor; }
+    
+    private void setActor(String actor) { this.actor = actor; }
     
     public String getBeschreibung() { return beschreibung; }
     
@@ -56,13 +62,13 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setEpic(String e) { epic = e; }
     
-    public int getMehrwert() { return mehrwert; }
+    public int getMwert() { return mwert; }
     
-    private void setMehrwert(int m) throws Exception {
+    private void setMwert(int m) throws Exception {
         if (m < 1 || m > 5) {
             throw new Exception("Der Mehrwert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
         }
-        mehrwert = m;
+        mwert = m;
     }
     
     public boolean isDone() { return done; }
@@ -91,7 +97,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setAufwand(int a) { aufwand = a; }
     
-    private double getPrio() { return CalcUtils.calcPrio(mehrwert, strafe, risiko, aufwand); }
+    private double getPrio() { return CalcUtils.calcPrio(mwert, strafe, risiko, aufwand); }
     
     @Override
     public int compareTo(UserStory o) {
@@ -102,4 +108,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         }
         return -1;
     }
+    
+    
 }

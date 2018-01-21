@@ -26,8 +26,9 @@ public class OutputUtils {
         if (s.matches("[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}")) {
             UUID usid = UUID.fromString(s);
             if (Container.getContainer().contains(usid)) {
+                int punkte = CalcUtils.bewertung(Container.getContainer().get(usid));
                 System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", s));
-                System.out.println("100% (sehr gut)"); // Hier kommt Methode zur Analyse.
+                //System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
             } else {
                 System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", s));
             }

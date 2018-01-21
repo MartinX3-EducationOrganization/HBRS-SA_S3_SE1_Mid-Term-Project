@@ -7,20 +7,24 @@ import org.bonn.se.ws17.midterm.model.Container;
 import java.util.Scanner;
 
 public class InputUtils {
+    private static String titel;
     private static String beschreibung;
+    private static String mehrwert;
+    private static String actor;
     private static String details;
     private static String acceptCrit;
-    private static int mehrwert;
+    private static String epic;
+    private static int mwert;
     private static int strafe;
     private static int risiko;
     private static int aufwand;
-    private static String epic;
-    private static String titel;
     
     public static void eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Geben Sie zunächst einen Titel für ihrer Userstory ein:");
         titel = sc.nextLine();
+        System.out.println("Aus welcher Sicht ist die Userstory verfasst? (Actor)");
+        actor = sc.nextLine();
         System.out.println("Geben Sie eine kurze Beschreibung ihrer Userstory ein:");
         beschreibung = sc.nextLine();
         System.out.println("Geben Sie jetzt ihre Details zur Userstory ein:");
@@ -29,15 +33,18 @@ public class InputUtils {
         acceptCrit = sc.nextLine();
         System.out.println("Unter welcher Epic lässt sich ihre Userstory einordnen?");
         epic = sc.nextLine();
-        System.out.println("Welchen Mehrwert erwarten Sie? (1-5)");
-        mehrwert = checker(sc, "Mehrwert");
+        System.out.println("Wie schätzen sie den Mehrwert ein? (schriftlich)");
+        mehrwert = sc.nextLine();
+        System.out.println("Welchen Mehrwert schätzen Sie ? (value 1-5)");
+        mwert = checker(sc, "Mehrwert");
         System.out.println("Welchen Wert hat die Strafe? (1-5)");
         strafe = checker(sc, "Strafe");
         System.out.println("Wie hoch schätzen Sie das Risiko ein? (1-5)");
         risiko = checker(sc, "Risiko");
         System.out.println("Wie hoch dürfte der Aufwand sein?");
         aufwand = checker(sc, "Aufwand");
-        UserStory us = new UserStory(titel, beschreibung, details, acceptCrit, epic, mehrwert, strafe, risiko, aufwand);
+    
+        UserStory us = new UserStory(titel, beschreibung, details, acceptCrit, mehrwert, epic, mwert, strafe, risiko, aufwand, actor);
         try {
             Container.getContainer().add(us);
         } catch (ContainerException e) {
@@ -63,7 +70,7 @@ public class InputUtils {
             sc.next();
         }
         int a = sc.nextInt();
-        if (s.equals("Aufwand") && checkFibonacci(a)) {
+        if (s.equals("Aufwand") && CalcUtils.checkFibonacci(a)) {
             return a;
         } else if (s.equals("Aufwand")) {
             System.out.println("Die Zahl " + a + " ist keine Fibonacci-Zahl." + "\n" + "Bitte korrigieren sie ihre Eingabe.");
@@ -74,15 +81,5 @@ public class InputUtils {
         } else {
             return a;
         }
-    }
-    
-    private static boolean checkFibonacci(int aufwandInt) {
-        int[] fibonacciZahlen = new int[]{1, 2, 3, 5, 8, 13, 21, 34, 55, 89,};
-        for (int i = 0; i < fibonacciZahlen.length; i++) {
-            if (aufwandInt == fibonacciZahlen[i]) {
-                return true;
-            }
-        }
-        return false;
     }
 }
