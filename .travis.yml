@@ -1,0 +1,8 @@
+language: java
+dist: trusty
+sudo: false
+addons:
+  apt:
+    packages:
+      - openjdk-8-jdk
+jdk: openjdk8

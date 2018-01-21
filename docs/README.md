@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MartinX3/Mid-Term-Project_HBRS-SA_S3_SE1.svg?branch=master)](https://travis-ci.org/MartinX3/Mid-Term-Project_HBRS-SA_S3_SE1)
+
 # Mid-Term-Project_HBRS-SA_S3_SE1
 Midterm Projekt der HBRS in SA im Fach Software Engineering 1 des 3. Semesters
 
