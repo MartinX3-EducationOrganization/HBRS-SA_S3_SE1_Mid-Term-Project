@@ -6,4 +6,4 @@ addons:
     packages:
       - openjdk-8-jdk
 jdk: openjdk8
-script: ant mid-term-project_hbrs-sa_s3_se1
+script: ant clean-build
