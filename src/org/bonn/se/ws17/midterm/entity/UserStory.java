@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public class UserStory implements Serializable, Comparable<UserStory> {
     
-    private final UUID id;
     private final double prioritaet;
+    private final UUID id;
     private String titel, beschreibung, details, akzeptanz, epic, actor, mehrwert;
     private int mwert, strafe, risiko, aufwand;    // 1-5
     private boolean done;
@@ -29,7 +29,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         prioritaet = getPrio();
         done = false;
     }
-    
+
     public String getMehrwert() { return mehrwert; }
     
     private void setMehrwert(String mehrwert) { this.mehrwert = mehrwert; }
@@ -43,6 +43,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     
     public UUID getId() { return id; }
+    
     
     public String getTitel() { return titel; }
     
@@ -109,5 +110,9 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         return -1;
     }
     
+    @Override
+    public String toString() {
+        return "UserStoryID: " + id + "\n" + "Titel: " + titel + "\n" + "Priorität: " + prioritaet;
+    }
     
 }

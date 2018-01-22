@@ -46,9 +46,19 @@ public class Controller {
             }
             
             String[] strings = strInput.split(" ");
-            if (strings[0].equals("analyze")) {
-                OutputUtils.analyze(strings[1]);
+            if (strings[0].equals("analyze") && strings[1].equals("-") && strings.equals("all")) {
+                OutputUtils.analyzeAll();
             }
+    
+            if (strings[0].equals("analyze") && !strings[1].equals("") && strings[3].equals("-")) {
+                OutputUtils.parameter(strings[2]);
+            }
+    
+            if (strings[0].equals("analyze") && !strings[1].equals("") && !strings[3].equals("")) {
+                OutputUtils.analyze(strings[2]);
+            }
+            
+    
             if (strings[0].equals("help")) {
                 OutputUtils.help();
             }

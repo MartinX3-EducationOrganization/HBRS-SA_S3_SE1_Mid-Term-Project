@@ -44,10 +44,9 @@ public class Container {
     }
     
     public UserStory get(UUID uuid) {
-        Optional<UserStory> vorhanden = liste.stream().filter(x -> x.getId() == uuid).findFirst();
-        System.out.println(vorhanden.toString());
-        if (vorhanden.isPresent()) {
-            return vorhanden.get();
+        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId() == uuid).findFirst();
+        if (us.isPresent()) {
+            return us.get();
         } else {
             return null;
         }
@@ -58,7 +57,6 @@ public class Container {
     }
     
     public void add(UserStory us) throws ContainerException {
-    
         if (!contains(us.getId())) {
             liste.add(us);
         } else {
@@ -70,13 +68,12 @@ public class Container {
         return liste.stream().anyMatch(x -> x.getId().equals(id));
     }
     
-    public void delete(UUID id) throws NoSuchObjectException {
-        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId() == id).findFirst();
+    public void delete(UUID uuid) throws NoSuchObjectException {
+        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId() == uuid).findFirst();
         if (us.isPresent()) {
-            UserStory entry = us.get();
-            liste.remove(us);
+            liste.removeIf(x -> x.getId() == uuid);
         } else {
-            throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", id));
+            throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", uuid));
         }
     }
     
