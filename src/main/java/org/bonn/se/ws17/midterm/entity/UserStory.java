@@ -29,7 +29,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         prioritaet = getPrio();
         done = false;
     }
-
+    
     public String getMehrwert() { return mehrwert; }
     
     private void setMehrwert(String mehrwert) { this.mehrwert = mehrwert; }
@@ -42,7 +42,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     
-    public UUID getId() { return id; }
+    public String getId() { return id.toString(); }
     
     
     public String getTitel() { return titel; }

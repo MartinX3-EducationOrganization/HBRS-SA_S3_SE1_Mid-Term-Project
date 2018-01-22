@@ -1,19 +1,19 @@
 package org.bonn.se.ws17.midterm.model;
 
 import org.bonn.se.ws17.midterm.entity.UserStory;
-import org.bonn.se.ws17.midterm.enumerator.Modus;
 import org.bonn.se.ws17.midterm.exception.ContainerException;
 
 import java.rmi.NoSuchObjectException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class Container {
     private static final Container container = new Container();
-    private List<String> actorList;
-    private List<UserStory> liste;
+    private final List<String> actorList = new ArrayList<>();
+    private final List<UserStory> liste = new ArrayList<>();
     
     private Container() {
-        changeListType(Modus.LIST_TYPE_ARRAY);
     }
     
     public static Container getContainer() {
@@ -28,30 +28,8 @@ public class Container {
         return actorList;
     }
     
-    private void changeListType(Modus modus) {
-        switch (modus) {
-            case LIST_TYPE_ARRAY:
-                liste = new ArrayList<>();
-                actorList = new ArrayList<>();
-                break;
-            
-            case LIST_TYPE_LINKED:
-                liste = new LinkedList<>();
-                actorList = new LinkedList<>();
-                break;
-            
-            default:
-                throw new NoSuchElementException("Modus [ " + modus + " ] wurde nicht implementiert.");
-        }
-    }
-    
-    public UserStory get(UUID uuid) {
-        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId().equals(uuid)).findAny();
-        if (us.isPresent()) {
-            return us.get();
-        } else {
-            return null;
-        }
+    public UserStory get(String uuid) {
+        return liste.stream().filter(entry -> entry.getId().equals(uuid)).findAny().orElse(null);
     }
     
     public void addActor(String s) {
@@ -66,8 +44,8 @@ public class Container {
         }
     }
     
-    public boolean contains(UUID id) {
-        return liste.stream().anyMatch(x -> x.getId().equals(id));
+    public boolean contains(String usid) {
+        return liste.stream().anyMatch(x -> x.getId().equals(usid));
     }
     
     public boolean containsActor(String s) { return actorList.stream().anyMatch(x -> x.equals(s)); }

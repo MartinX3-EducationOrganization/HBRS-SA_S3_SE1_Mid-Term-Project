@@ -3,10 +3,8 @@ package org.bonn.se.ws17.midterm.dto;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.utility.CalcUtils;
 
-import java.util.UUID;
-
 public class UserStoryDTO implements Comparable<UserStoryDTO> {
-    private final UUID id;
+    private final String id;
     private final String titel;
     private final double prioritaet;
     
@@ -16,7 +14,7 @@ public class UserStoryDTO implements Comparable<UserStoryDTO> {
         prioritaet = CalcUtils.calcPrio(us.getMwert(), us.getStrafe(), us.getRisiko(), us.getAufwand());
     }
     
-    public UUID getId() { return id; }
+    public String getId() { return id; }
     
     public String getTitel() { return titel; }
     
