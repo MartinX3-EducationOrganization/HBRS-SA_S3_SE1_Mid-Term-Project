@@ -9,8 +9,8 @@ import java.util.*;
 
 public class Container {
     private static final Container container = new Container();
-    private List<UserStory> liste;
     private List<String> actorList;
+    private List<UserStory> liste;
     
     private Container() {
         changeListType(Modus.LIST_TYPE_ARRAY);
@@ -32,10 +32,12 @@ public class Container {
         switch (modus) {
             case LIST_TYPE_ARRAY:
                 liste = new ArrayList<>();
+                actorList = new ArrayList<>();
                 break;
             
             case LIST_TYPE_LINKED:
                 liste = new LinkedList<>();
+                actorList = new LinkedList<>();
                 break;
             
             default:
@@ -67,6 +69,8 @@ public class Container {
     public boolean contains(UUID id) {
         return liste.stream().anyMatch(x -> x.getId().equals(id));
     }
+    
+    public boolean containsActor(String s) { return actorList.stream().anyMatch(x -> x.equals(s)); }
     
     public void delete(UUID uuid) throws NoSuchObjectException {
         for (int i = 0; i < liste.size(); i++) {

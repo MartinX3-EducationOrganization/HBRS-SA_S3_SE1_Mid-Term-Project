@@ -64,6 +64,9 @@ public class Analyze {
     }
     
     private static int bekannterActor(UserStory us) {
+        if (Container.getContainer().getActorList().isEmpty()) {
+            System.out.println("Liste Leer");
+        }
         if (Container.getContainer().getActorList().contains(us.getActor())) {
             return 0;
         } else {

@@ -65,4 +65,12 @@ public class OutputUtils {
                 System.out.println(String.format("Der Parameter - %s ist kein gültiger. Geben Sie 'help' ein für Hilfe.", string));
         }
     }
+    
+    public static void addActor(String s) {
+        if (Container.getContainer().containsActor(s)) {
+            System.out.println(String.format("Der Akteur %s ist schonn in der Liste.", s));
+        }
+        Container.getContainer().addActor(s);
+        System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
+    }
 }

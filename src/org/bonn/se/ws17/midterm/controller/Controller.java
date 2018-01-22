@@ -44,25 +44,29 @@ public class Controller {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+    
             String[] strings = strInput.split(" ");
             if (strings[0].equals("analyze") && strings[1].equals("-") && strings[2].equals("all")) {
                 OutputUtils.analyzeAll();
             }
     
-            if (strings[0].equals("analyze") && !strings[1].equals("") && strings[2].equals("-")) {
-                OutputUtils.parameter(strings[2]);
+            if (strings[0].equals("analyze") && !strings[1].equals("") && strings[2].equals("-") && !strings[3].isEmpty()) {
+                OutputUtils.parameter(strings[3]);
             }
     
-            if (strings[0].equals("analyze") && !strings[1].equals("") && !strings[2].equals("")) {
+            if (strings[0].equals("analyze") && !strings[1].equals("")) {
                 OutputUtils.analyze(strings[2]);
             }
-            
+            if (strings[0].equals("addElement") && strings[1].equals("-") && !strings[2].equals("")) {
+                OutputUtils.addActor(strings[2]);
+            }
+    
     
             if (strings[0].equals("help")) {
                 OutputUtils.help();
             }
-            
+    
+    
             if (strings[0].equals("dump")) {
                 dump(true);
             }
