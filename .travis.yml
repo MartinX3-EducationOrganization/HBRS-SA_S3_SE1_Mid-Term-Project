@@ -1,5 +1,4 @@
 language: java
-install: maven
 dist: trusty
 sudo: false
 addons:
