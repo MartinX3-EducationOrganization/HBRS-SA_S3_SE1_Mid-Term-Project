@@ -11,7 +11,6 @@ import org.bonn.se.ws17.midterm.view.OutputView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,19 +18,15 @@ public class Controller {
     
     private void dump(boolean b) {
         Container container = Container.getContainer();
-        List<UserStory> liste;
+        List<UserStory> userStories;
         System.out.println("Userstories:");
         if (b) {
-            liste = container.getList();
+            userStories = container.getUserStories();
         } else {
-            liste = container.getList().stream().filter(x -> !x.isDone()).collect(Collectors.toList());
+            userStories = container.getUndoneUserStories();
         }
-        List<UserStoryDTO> listDTO = new ArrayList<>();
-        liste.forEach(entity -> {
-            UserStoryDTO dto = new UserStoryDTO(entity);
-            listDTO.add(dto);
-        });
-        new OutputView().display(listDTO);
+    
+        new OutputView().display(userStories.stream().map(us -> new UserStoryDTO(us)).collect(Collectors.toList()));
     }
     
     public void anfang() {

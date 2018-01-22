@@ -41,7 +41,7 @@ public class OutputUtils {
     
     public static void analyzeAll() {
         int bewertung = 0;
-        List<UserStory> list = Container.getContainer().getList();
+        List<UserStory> list = Container.getContainer().getUserStories();
         for (int i = 0; i < list.size(); i++) {
             bewertung += CalcUtils.bewertung(list.get(i));
         }

@@ -14,7 +14,7 @@ public class IOUtils {
         try {
             try (FileOutputStream fos = new FileOutputStream("UserStoryListe.ser")) {
                 try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                    oos.writeObject(Container.getContainer().getList());
+                    oos.writeObject(Container.getContainer().getUserStories());
                     System.out.println(Container.getContainer().size() + " User Stories wurden erfolgreich gespeichert!");
                 }
             } catch (IOException e) {

@@ -7,11 +7,13 @@ import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class Container {
     private static final Container container = new Container();
-    private final List<String> actorList = new ArrayList<>();
-    private final List<UserStory> liste = new ArrayList<>();
+    private final List<String> actors = new ArrayList<>();
+    private final ConcurrentHashMap<String, UserStory> userStories = new ConcurrentHashMap<>();
     
     private Container() {
     }
@@ -20,51 +22,51 @@ public class Container {
         return container;
     }
     
-    public List<UserStory> getList() {
-        return liste;
+    public List<UserStory> getUserStories() {
+        return (List<UserStory>) userStories.values();
     }
     
-    public List<String> getActorList() {
-        return actorList;
+    public List<UserStory> getUndoneUserStories() {
+        return userStories.values().stream().filter(us -> !us.isDone()).collect(Collectors.toList());
+    }
+    
+    public List<String> getActors() {
+        return actors;
     }
     
     public UserStory get(String uuid) {
-        return liste.stream().filter(entry -> entry.getId().equals(uuid)).findAny().orElse(null);
+        return userStories.get(uuid);
     }
     
     public void addActor(String s) {
-        actorList.add(s);
+        actors.add(s);
     }
     
     public void add(UserStory us) throws ContainerException {
         if (!contains(us.getId())) {
-            liste.add(us);
+            userStories.put(us.getId(), us);
         } else {
             throw new ContainerException(us.getId());
         }
     }
     
     public boolean contains(String usid) {
-        return liste.stream().anyMatch(x -> x.getId().equals(usid));
+        return userStories.containsKey(usid);
     }
     
-    public boolean containsActor(String s) { return actorList.stream().anyMatch(x -> x.equals(s)); }
+    public boolean containsActor(String s) { return actors.stream().anyMatch(x -> x.equals(s)); }
     
     public void delete(UUID uuid) throws NoSuchObjectException {
-        for (int i = 0; i < liste.size(); i++) {
-            if (liste.get(i).getId().equals(uuid)) {
-                liste.remove(i);
-                return;
-            }
+        if (userStories.remove(uuid) == null) {
             throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", uuid));
         }
     }
     
     public int size() {
-        return liste.size();
+        return userStories.size();
     }
     
     public void clear() {
-        liste.clear();
+        userStories.clear();
     }
 }
