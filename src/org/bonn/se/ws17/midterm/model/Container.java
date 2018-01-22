@@ -44,7 +44,7 @@ public class Container {
     }
     
     public UserStory get(UUID uuid) {
-        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId() == uuid).findFirst();
+        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId().equals(uuid)).findAny();
         if (us.isPresent()) {
             return us.get();
         } else {
