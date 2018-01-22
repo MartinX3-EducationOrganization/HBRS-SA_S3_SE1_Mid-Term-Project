@@ -30,7 +30,7 @@ public class CalcUtils {
             return "Gut";
         }
         if (punkte >= 25 && punkte < 50) {
-            return "Nicht gut.";
+            return "Nicht gut";
         }
         return "Schlecht";
     }

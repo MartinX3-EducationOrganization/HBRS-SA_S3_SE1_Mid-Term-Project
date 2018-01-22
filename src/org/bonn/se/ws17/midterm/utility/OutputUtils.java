@@ -31,7 +31,7 @@ public class OutputUtils {
             if (Container.getContainer().contains(usid)) {
                 int punkte = CalcUtils.bewertung(Container.getContainer().get(usid));
                 System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", s));
-                //System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
+                System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
             } else {
                 System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", s));
             }
@@ -47,8 +47,8 @@ public class OutputUtils {
         for (int i = 0; i < list.size(); i++) {
             bewertung += CalcUtils.bewertung(list.get(i));
         }
-        System.out.println(String.format("Ihre %d User Stories haben durchschnittlich folgende Qualität:"));
-        System.out.println(String.format("&d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
+        System.out.println(String.format("Ihre %d User Stories haben durchschnittlich folgende Qualität:", Container.getContainer().size()));
+        System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
     }
     
     // all details hints

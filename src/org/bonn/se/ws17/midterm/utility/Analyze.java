@@ -11,25 +11,25 @@ public class Analyze {
     
     private static int missing(UserStory us) {
         int malus = 0; // max -75pkt
-        if (us.getTitel() == null) {
+        if (us.getTitel().equals("")) {
             malus += 5;
         }
-        if (us.getBeschreibung() == null) {
+        if (us.getBeschreibung().equals("")) {
             malus += 10;
         }
-        if (us.getDetails() == null) {
+        if (us.getDetails().equals("")) {
             malus += 15;
         }
-        if (us.getAkzeptanz() == null) {
+        if (us.getAkzeptanz().equals("")) {
             malus += 15;
         }
-        if (us.getMehrwert() == null) {
+        if (us.getMehrwert().equals("")) {
             malus += 15;
         }
-        if (us.getEpic() == null) {
+        if (us.getEpic().equals("")) {
             malus += 5;
         }
-        if (us.getActor() == null) {
+        if (us.getActor().equals("")) {
             malus += 10;
         }
         return malus;
@@ -64,8 +64,7 @@ public class Analyze {
     }
     
     private static int bekannterActor(UserStory us) {
-        int malus = 0;
-        if (!Container.getContainer().getActorList().contains(us.getActor())) {
+        if (Container.getContainer().getActorList().contains(us.getActor())) {
             return 0;
         } else {
             return 10;
