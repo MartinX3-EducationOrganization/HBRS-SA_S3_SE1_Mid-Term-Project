@@ -70,7 +70,7 @@ public class Container {
     
     public void delete(UUID uuid) throws NoSuchObjectException {
         for (int i = 0; i < liste.size(); i++) {
-            if (liste.get(i).getId() == uuid) {
+            if (liste.get(i).getId().equals(uuid)) {
                 liste.remove(i);
                 return;
             }
