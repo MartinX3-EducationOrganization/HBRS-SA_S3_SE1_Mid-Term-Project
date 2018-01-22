@@ -69,10 +69,11 @@ public class Container {
     }
     
     public void delete(UUID uuid) throws NoSuchObjectException {
-        Optional<UserStory> us = liste.stream().filter(entry -> entry.getId() == uuid).findFirst();
-        if (us.isPresent()) {
-            liste.removeIf(x -> x.getId() == uuid);
-        } else {
+        for (int i = 0; i < liste.size(); i++) {
+            if (liste.get(i).getId() == uuid) {
+                liste.remove(i);
+                return;
+            }
             throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", uuid));
         }
     }
