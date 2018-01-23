@@ -8,11 +8,10 @@ import java.util.UUID;
 public class UserStory implements Serializable, Comparable<UserStory> {
     
     private final double prioritaet;
-    private final UUID id;
+    private final String id = UUID.randomUUID().toString();
     private String titel, beschreibung, details, akzeptanz, epic, actor, mehrwert;
-    private int mwert, strafe, risiko, aufwand;
-    private boolean done;
-    
+    private int mwert, strafe, risiko, aufwand;    // 1-5
+    private boolean done = false;
     
     public UserStory(String titel, String beschreibung, String details, String akzeptanz, String mehrwert, String epic, int mwert, int strafe, int risiko, int aufwand, String actor) throws Exception {
         setTitel(titel);
@@ -26,9 +25,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
         setRisiko(risiko);
         setAufwand(aufwand);
         setActor(actor);
-        id = UUID.randomUUID();
         prioritaet = getPrio();
-        done = false;
     }
     
     public String getMehrwert() { return mehrwert; }
@@ -43,7 +40,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     private void setBeschreibung(String beschreibung) { this.beschreibung = beschreibung; }
     
-    public String getId() { return id.toString(); }
+    public String getId() { return id; }
     
     
     public String getTitel() { return titel; }

@@ -1,18 +1,18 @@
 package org.bonn.se.ws17.midterm.model;
 
+import org.bonn.se.ws17.midterm.command.Command;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.exception.ContainerException;
 
-import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Container {
     private static final Container container = new Container();
-    private final List<Commando> history = new ArrayList<>();
+    private final Stack<Command> history = new Stack<>();
     private final List<String> actors = new ArrayList<>();
     private final ConcurrentHashMap<String, UserStory> userStories = new ConcurrentHashMap<>();
     
@@ -21,14 +21,6 @@ public class Container {
     
     public static Container getContainer() {
         return container;
-    }
-    
-    public void add(Commando e) {
-        history.add(e);
-    }
-    
-    public void delete(Commando e) {
-        history.remove(e);
     }
     
     public List<UserStory> getUserStories() {
@@ -65,10 +57,8 @@ public class Container {
     
     public boolean containsActor(String s) { return actors.stream().anyMatch(x -> x.equals(s)); }
     
-    public void delete(UUID uuid) throws NoSuchObjectException {
-        if (userStories.remove(uuid) == null) {
-            throw new NoSuchObjectException(String.format("Das UserStory-Objekt mit der ID [%s] existiert nicht!", uuid));
-        }
+    public void removeUS(String usid) {
+        userStories.remove(usid);
     }
     
     public int size() {
@@ -77,5 +67,9 @@ public class Container {
     
     public void clear() {
         userStories.clear();
+    }
+    
+    public Stack<Command> getHistory() {
+        return history;
     }
 }
