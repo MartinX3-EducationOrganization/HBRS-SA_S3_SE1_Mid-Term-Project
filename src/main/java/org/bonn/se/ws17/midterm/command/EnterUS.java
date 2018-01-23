@@ -3,8 +3,12 @@ package org.bonn.se.ws17.midterm.command;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.InputUtils;
 
-public class Enter implements Command, Cloneable {
-    String usid = "";
+public class EnterUS implements Command, Cloneable {
+    private String usid = "";
+    
+    private void setUsid(String usid) {
+        this.usid = usid;
+    }
     
     @Override
     public void undo() {
@@ -18,5 +22,12 @@ public class Enter implements Command, Cloneable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    @Override
+    public Command clone() {
+        EnterUS cmd = new EnterUS();
+        cmd.setUsid(usid);
+        return cmd;
     }
 }

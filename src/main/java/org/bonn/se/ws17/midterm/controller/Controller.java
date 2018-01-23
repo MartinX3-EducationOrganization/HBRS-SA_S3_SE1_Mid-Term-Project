@@ -1,6 +1,6 @@
 package org.bonn.se.ws17.midterm.controller;
 
-import org.bonn.se.ws17.midterm.command.Enter;
+import org.bonn.se.ws17.midterm.command.EnterUS;
 import org.bonn.se.ws17.midterm.dto.UserStoryDTO;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
@@ -82,7 +82,7 @@ public class Controller {
     
             if (strings[0].equals("enter")) {
                 try {
-                    Container.getContainer().addHistory(new Enter(), null);
+                    Container.getContainer().addHistory(new EnterUS(), null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
