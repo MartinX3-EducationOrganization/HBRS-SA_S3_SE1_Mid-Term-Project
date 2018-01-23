@@ -11,6 +11,7 @@ import org.bonn.se.ws17.midterm.view.OutputView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,17 +20,17 @@ public class Controller {
     private void dump(boolean b) {
         Container container = Container.getContainer();
         List<UserStory> userStories;
-        System.out.println("Userstories:");
         if (b) {
             userStories = container.getUserStories();
         } else {
             userStories = container.getUndoneUserStories();
         }
-    
+        System.out.println("Userstories:");
         new OutputView().display(userStories.stream().map(us -> new UserStoryDTO(us)).collect(Collectors.toList()));
     }
     
     public void anfang() {
+        String[] commands = {"analyze", "addElement", "help", "dump", "dumpNotDone", "load", "store", "exit", "enter"};
         OutputUtils.welcome();
         String strInput = null;
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
@@ -89,6 +90,9 @@ public class Controller {
             }
             if (strings[0].equals("exit")) {
                 break;
+            }
+            if (!Arrays.asList(commands).contains(strings[0])) {
+                OutputUtils.wrongInput(strings[0]);
             }
         }
     }

@@ -1,5 +1,6 @@
 package org.bonn.se.ws17.midterm.model;
 
+import org.bonn.se.ws17.midterm.command.Commando;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.exception.ContainerException;
 
@@ -10,9 +11,9 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public class Container<E> {
+public class Container {
     private static final Container container = new Container();
-    private final List<E> history = new ArrayList<>();
+    private final List<Commando> history = new ArrayList<>();
     private final List<String> actors = new ArrayList<>();
     private final ConcurrentHashMap<String, UserStory> userStories = new ConcurrentHashMap<>();
     
@@ -23,11 +24,11 @@ public class Container<E> {
         return container;
     }
     
-    public void add(E e) {
+    public void add(Commando e) {
         history.add(e);
     }
     
-    public void delete(E e) {
+    public void delete(Commando e) {
         history.remove(e);
     }
     
