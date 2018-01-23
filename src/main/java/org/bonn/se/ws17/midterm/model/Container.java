@@ -69,7 +69,12 @@ public class Container {
         userStories.clear();
     }
     
-    public Stack<Command> getHistory() {
-        return history;
+    public void addHistory(Command cmd, String[] params) {
+        history.add(cmd);
+        history.peek().execute(params);
+    }
+    
+    public void undoHistory() {
+        history.pop().undo();
     }
 }
