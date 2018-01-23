@@ -4,6 +4,6 @@ public interface Command {
     void execute();
     void undo();
     
-    Command clone() throws CloneNotSupportedException;
+    Command clone();
 }
 

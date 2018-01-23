@@ -23,7 +23,7 @@ public class EnterCommand implements Command, Cloneable {
     }
     
     @Override
-    public Command clone() throws CloneNotSupportedException {
+    public Command clone() {
         EnterCommand cmd = new EnterCommand();
         cmd.setUsid(usid);
         return cmd;

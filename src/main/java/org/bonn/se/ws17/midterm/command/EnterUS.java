@@ -11,11 +11,15 @@ public class EnterUS implements Command, Cloneable {
     }
     
     @Override
+    public void execute() {
+    
+    }
+    
+    @Override
     public void undo() {
         Container.getContainer().removeUS(usid);
     }
     
-    @Override
     public void execute(String[] strings) {
         try {
             usid = InputUtils.eingabe();

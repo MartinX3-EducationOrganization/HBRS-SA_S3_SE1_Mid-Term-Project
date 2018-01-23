@@ -14,7 +14,7 @@ public class StoreCommand implements Command {
     }
     
     @Override
-    public Command clone() throws CloneNotSupportedException {
+    public Command clone() {
         return null;
     }
 }
