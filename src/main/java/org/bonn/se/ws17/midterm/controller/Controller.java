@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Controller {
     private final HashMap<String, Command> commands = null;
     
-    Controller() {
+    public Controller() {
         setupCommands();
     }
     
