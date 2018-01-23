@@ -3,22 +3,8 @@ package org.bonn.se.ws17.midterm.command;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.InputUtils;
 
-public class EnterUS implements Command, Cloneable {
+public class EnterCommand implements Command, Cloneable {
     private String usid = "";
-    
-    private void setUsid(String usid) {
-        this.usid = usid;
-    }
-    
-    @Override
-    public void execute() {
-    
-    }
-    
-    @Override
-    public void undo() {
-        Container.getContainer().removeUS(usid);
-    }
     
     public void execute(String[] strings) {
         try {
@@ -26,16 +12,25 @@ public class EnterUS implements Command, Cloneable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
     
-        Container.getContainer().addHistory(clone());
+    @Override
+    public void execute() {}
+    
+    @Override
+    public void undo() {
+        Container.getContainer().removeUS(usid);
     }
     
     @Override
     public Command clone() {
-        EnterUS cmd = new EnterUS();
-    
+        EnterCommand cmd = new EnterCommand();
         cmd.setUsid(usid);
-    
         return cmd;
     }
+    
+    public void setUsid(String usid) {
+        this.usid = usid;
+    }
+    
 }
