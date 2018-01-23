@@ -5,6 +5,8 @@ import org.bonn.se.ws17.midterm.model.Container;
 
 import java.util.List;
 
+import static org.bonn.se.ws17.midterm.analyze.Analyze.countWords;
+
 public class OutputUtils {
     private static final String[] parameterList = new String[]{"all", "details", "hints"};
     
@@ -25,7 +27,7 @@ public class OutputUtils {
     }
     
     public static void analyze(String usid) {
-        if (usid.matches("[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}")) {
+        if (isUUID(usid)) {
             if (Container.getContainer().contains(usid)) {
                 int punkte = CalcUtils.bewertung(Container.getContainer().get(usid));
                 System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", usid));
@@ -33,10 +35,16 @@ public class OutputUtils {
             } else {
                 System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", usid));
             }
-        } else {
-            System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
-            System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
         }
+    }
+    
+    public static boolean isUUID(String usid) {
+        if (usid.matches("[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}")) {
+            return true;
+        }
+        System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
+        System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
+        return false;
     }
     
     public static void analyzeAll() {
@@ -49,18 +57,21 @@ public class OutputUtils {
         System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
     }
     
-    // all details hints
-    public static void parameter(String string) {
-        switch (string) {
+    // details hints
+    public static void parameter(String uuid, String parameter) {
+        switch (parameter) {
             
             case "details":
-                //TODO
+                analyze(uuid);
+                System.out.println();
+                System.out.println("Details:");
+                details(Container.getContainer().get(uuid));
                 break;
             case "hints":
                 //TODO
                 break;
             default:
-                System.out.println(String.format("Der Parameter - %s ist kein gültiger. Geben Sie 'help' ein für Hilfe.", string));
+                System.out.println(String.format("Der Parameter - %s ist kein gültiger. Geben Sie 'help' ein für Hilfe.", parameter));
         }
     }
     
@@ -70,5 +81,32 @@ public class OutputUtils {
         }
         Container.getContainer().addActor(s);
         System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
+    }
+    
+    public static void details(UserStory us) {
+        if (us.getTitel().equals("")) {
+            System.out.println("Es fehlt es ein Titel in ihrer Userstory. ");
+        } else if (countWords(us.getTitel()) > 3) {
+            System.out.println("Ihr Titel in ihrer UserStory besteht aus zuvielen Wörtern.");
+        }
+        if (us.getBeschreibung().equals("Es fehlt in ihrer Userstory eine Beschreibung.")) {
+            System.out.println();
+        } else if (countWords(us.getBeschreibung()) > 50) {System.out.println();}
+        if (us.getDetails().equals("")) {
+            System.out.println();
+        } else if (countWords(us.getDetails()) > 30) {System.out.println();}
+        if (us.getAkzeptanz().equals("")) {
+            System.out.println();
+        } else if (countWords(us.getAkzeptanz()) > 30) {System.out.println();}
+        if (us.getMehrwert().equals("")) {
+            System.out.println();
+        } else if (countWords(us.getMehrwert()) > 30) {System.out.println();}
+        if (us.getEpic().equals("")) {
+            System.out.println();
+        } else if (countWords(us.getEpic()) > 3) {System.out.println();}
+        if (us.getActor().equals("")) {
+            System.out.println();
+        } else if (countWords(us.getActor()) > 2) {System.out.println();}
+        
     }
 }

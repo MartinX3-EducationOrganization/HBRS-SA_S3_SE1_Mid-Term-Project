@@ -46,7 +46,7 @@ public class Controller {
             }
     
             if (strings[0].equals("analyze") && !strings[1].equals("") && strings[2].equals("-") && !strings[3].isEmpty()) {
-                OutputUtils.parameter(strings[3]);
+                OutputUtils.parameter(strings[1], strings[3]);
             }
     
             if (strings[0].equals("analyze") && !strings[1].equals("")) {

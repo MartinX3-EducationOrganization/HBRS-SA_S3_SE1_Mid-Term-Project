@@ -1,4 +1,4 @@
-package org.bonn.se.ws17.midterm.utility;
+package org.bonn.se.ws17.midterm.analyze;
 
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
@@ -9,6 +9,9 @@ public class Analyze {
         return missing(us) + bandwurmMalus(us) + bekannterActor(us);
     }
     
+    /**
+     * Punkteabzug für fehlende Inhalte bzw. wenn die diese zu befüllt sind-(zu viel Text Abzug 5)
+     */
     private static int missing(UserStory us) {
         int malus = 0; // max -75pkt
         if (us.getTitel().equals("")) {
@@ -23,7 +26,6 @@ public class Analyze {
         if (us.getAkzeptanz().equals("")) {
             malus += 15;
         } else if (countWords(us.getAkzeptanz()) > 30) {malus += 5;}
-        
         if (us.getMehrwert().equals("")) {
             malus += 15;
         } else if (countWords(us.getMehrwert()) > 30) {malus += 5;}

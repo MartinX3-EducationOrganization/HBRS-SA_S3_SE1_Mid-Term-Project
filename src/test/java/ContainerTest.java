@@ -19,7 +19,7 @@ public class ContainerTest {
     
     @Test
     public void testAnalyze() throws ContainerException {
-        OutputUtils.analyze(us.getId().toString());
+        OutputUtils.analyze(us.getId());
     }
     
     @After

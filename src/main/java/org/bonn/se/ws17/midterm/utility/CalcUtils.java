@@ -1,5 +1,6 @@
 package org.bonn.se.ws17.midterm.utility;
 
+import org.bonn.se.ws17.midterm.analyze.Analyze;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 
 public class CalcUtils {

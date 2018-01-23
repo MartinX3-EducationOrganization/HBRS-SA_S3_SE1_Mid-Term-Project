@@ -10,8 +10,9 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public class Container {
+public class Container<E> {
     private static final Container container = new Container();
+    private final List<E> history = new ArrayList<>();
     private final List<String> actors = new ArrayList<>();
     private final ConcurrentHashMap<String, UserStory> userStories = new ConcurrentHashMap<>();
     
@@ -20,6 +21,14 @@ public class Container {
     
     public static Container getContainer() {
         return container;
+    }
+    
+    public void add(E e) {
+        history.add(e);
+    }
+    
+    public void delete(E e) {
+        history.remove(e);
     }
     
     public List<UserStory> getUserStories() {
