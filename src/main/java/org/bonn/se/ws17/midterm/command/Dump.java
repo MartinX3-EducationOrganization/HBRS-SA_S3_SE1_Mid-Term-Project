@@ -8,21 +8,18 @@ import org.bonn.se.ws17.midterm.view.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DumpCommand implements Command {
+public class Dump implements Command {
     
     @Override
-    public void execute() {
-        
+    public void execute(String[] params) {
         Container container = Container.getContainer();
         List<UserStory> userStories = container.getUserStories();
         System.out.println("Userstories:");
-        new OutputView().display(userStories.stream().map(us -> new UserStoryDTO(us)).collect(Collectors.toList()));
+        new OutputView().display(userStories.stream().map(UserStoryDTO::new).collect(Collectors.toList()));
     }
-    
     
     @Override
     public void undo() {
-    
     }
     
     @Override

@@ -1,14 +1,9 @@
 package org.bonn.se.ws17.midterm.dto;
 
 
-import org.bonn.se.ws17.midterm.utility.CalcUtils;
-
-import java.util.UUID;
-
 public class UserStoryDTOInput {
-    
-    private final UUID id;
-    private final double prioritaet;
+    private String id;
+    private double prioritaet;
     private String titel;
     private String beschreibung;
     private String details;
@@ -22,7 +17,7 @@ public class UserStoryDTOInput {
     private int aufwand;
     private boolean done;
     
-    public UserStoryDTOInput(String titel, String beschreibung, String details, String akzeptanz, String mehrwert, String epic, int mwert, int strafe, int risiko, int aufwand, String actor) {
+    public UserStoryDTOInput(String id, String titel, String beschreibung, String details, String akzeptanz, String mehrwert, String epic, int mwert, int strafe, int risiko, int aufwand, String actor, double prioritaet, boolean done) {
         setTitel(titel);
         setBeschreibung(beschreibung);
         setDetails(details);
@@ -34,12 +29,24 @@ public class UserStoryDTOInput {
         setRisiko(risiko);
         setAufwand(aufwand);
         setActor(actor);
-        id = UUID.randomUUID();
-        prioritaet = getPrio();
-        done = false;
+        setId(id);
+        setPrioritaet(prioritaet);
+        setDone(done);
     }
     
-    public UUID getId() { return id; }
+    public double getPrioritaet() {
+        return prioritaet;
+    }
+    
+    public void setPrioritaet(double prioritaet) {
+        this.prioritaet = prioritaet;
+    }
+    
+    public String getId() { return id; }
+    
+    public void setId(String id) {
+        this.id = id;
+    }
     
     public String getTitel() { return titel; }
     
@@ -89,5 +96,5 @@ public class UserStoryDTOInput {
     
     public void setDone(boolean done) { this.done = done; }
     
-    private double getPrio() { return CalcUtils.calcPrio(mwert, strafe, risiko, aufwand); }
+    private double getPrio() { return prioritaet; }
 }

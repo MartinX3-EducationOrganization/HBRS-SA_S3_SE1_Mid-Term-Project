@@ -4,6 +4,7 @@ import org.bonn.se.ws17.midterm.command.*;
 import org.bonn.se.ws17.midterm.utility.OutputUtils;
 import org.bonn.se.ws17.midterm.view.Terminal;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -17,11 +18,11 @@ public class Controller {
     
     private void setupCommands() {
         HashMap<String, Command> commands = new HashMap<>();
-        commands.put("exit", new ExitCommand());
-        commands.put("enter", new EnterCommand());
-        commands.put("dump", new DumpCommand());
-        commands.put("store", new StoreCommand());
-        commands.put("load", new LoadCommand());
+        commands.put("exit", new Exit());
+        commands.put("enter", new EnterUS());
+        commands.put("dump", new Dump());
+        commands.put("store", new Store());
+        commands.put("load", new Load());
     }
     
     public void anfang() {
@@ -43,7 +44,7 @@ public class Controller {
                 if ((command == null)) {
                     System.out.println(String.format("Der Befehlt nicht unterstuetzt!", strings[0]));
                 } else {
-                    command.execute();
+                    command.execute(Arrays.copyOfRange(strings, 1, strings.length));
                 }
             }
     

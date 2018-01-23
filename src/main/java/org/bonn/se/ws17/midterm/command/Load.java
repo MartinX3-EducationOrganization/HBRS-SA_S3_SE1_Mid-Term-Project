@@ -1,18 +1,15 @@
 package org.bonn.se.ws17.midterm.command;
 
+import org.bonn.se.ws17.midterm.utility.IOUtils;
 
-public class ExitCommand implements Command {
-    
+public class Load implements Command {
     @Override
-    public void execute() {
-        System.out.println("Aufwiedersehen und bis zum naechsten Mal!");
-        System.exit(0);
-        
+    public void execute(String[] params) {
+        IOUtils.load();
     }
     
     @Override
     public void undo() {
-    
     }
     
     @Override

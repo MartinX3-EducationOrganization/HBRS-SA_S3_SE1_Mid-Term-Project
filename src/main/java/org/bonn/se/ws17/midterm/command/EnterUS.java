@@ -11,8 +11,12 @@ public class EnterUS implements Command, Cloneable {
     }
     
     @Override
-    public void execute() {
-    
+    public void execute(String[] strings) {
+        try {
+            usid = InputUtils.eingabe();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     @Override
@@ -20,22 +24,10 @@ public class EnterUS implements Command, Cloneable {
         Container.getContainer().removeUS(usid);
     }
     
-    public void execute(String[] strings) {
-        try {
-            usid = InputUtils.eingabe();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    
-        Container.getContainer().addHistory(clone());
-    }
-    
     @Override
     public Command clone() {
         EnterUS cmd = new EnterUS();
-    
         cmd.setUsid(usid);
-    
         return cmd;
     }
 }
