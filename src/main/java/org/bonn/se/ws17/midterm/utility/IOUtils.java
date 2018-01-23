@@ -29,12 +29,14 @@ public class IOUtils {
     public static void load() {
         Container container = Container.getContainer();
         container.clear();
-        
-        List<UserStory> userStories;
+    
+        List<UserStory> userStories = null;
         try {
             try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {
                 try (ObjectInputStream ois = new ObjectInputStream(in)) {
                     userStories = (List<UserStory>) (ois.readObject());
+                } catch (EOFException eofe) {
+                    //Fileend reached.
                 }
             }
         } catch (Exception e) {

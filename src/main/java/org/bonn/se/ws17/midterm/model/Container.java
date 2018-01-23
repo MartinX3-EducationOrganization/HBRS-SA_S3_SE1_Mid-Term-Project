@@ -32,7 +32,7 @@ public class Container<E> {
     }
     
     public List<UserStory> getUserStories() {
-        return (List<UserStory>) userStories.values();
+        return new ArrayList<>(userStories.values());
     }
     
     public List<UserStory> getUndoneUserStories() {
