@@ -22,12 +22,16 @@ public class EnterUS implements Command, Cloneable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    
+        Container.getContainer().addHistory(clone());
     }
     
     @Override
     public Command clone() {
         EnterUS cmd = new EnterUS();
+    
         cmd.setUsid(usid);
+    
         return cmd;
     }
 }

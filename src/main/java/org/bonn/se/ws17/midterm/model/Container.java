@@ -69,9 +69,8 @@ public class Container {
         userStories.clear();
     }
     
-    public void addHistory(Command cmd, String[] params) {
+    public void addHistory(Command cmd) {
         history.add(cmd);
-        history.peek().execute(params);
     }
     
     public void undoHistory() {
