@@ -23,7 +23,7 @@ public class InputUtils {
         Scanner sc = new Scanner(System.in);
         System.out.println("Geben Sie zunächst einen Titel für ihrer Userstory ein:");
         titel = sc.nextLine();
-        System.out.println("Aus welcher Sicht ist die Userstory verfasst? (Actor)");
+        System.out.println("Aus welcher Sicht ist die Userstory verfasst? (Akteur)");
         actor = sc.nextLine();
         System.out.println("Geben Sie eine kurze Beschreibung ihrer Userstory ein:");
         beschreibung = sc.nextLine();

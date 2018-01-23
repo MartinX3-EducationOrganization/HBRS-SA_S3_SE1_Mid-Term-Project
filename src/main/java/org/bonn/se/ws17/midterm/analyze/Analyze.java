@@ -34,7 +34,7 @@ public class Analyze {
         } else if (countWords(us.getEpic()) > 3) {malus += 5;}
         if (us.getActor().equals("")) {
             malus += 10;
-        } else if (countWords(us.getActor()) > 2) {malus += 5;}
+        } else if (!Container.getContainer().getActors().contains(us.getActor())) {malus += 10;}
         return malus;
     }
     

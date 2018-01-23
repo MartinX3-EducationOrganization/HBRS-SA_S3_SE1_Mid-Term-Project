@@ -8,7 +8,6 @@ import java.util.List;
 import static org.bonn.se.ws17.midterm.analyze.Analyze.countWords;
 
 public class OutputUtils {
-    private static final String[] parameterList = new String[]{"all", "details", "hints"};
     
     public static void welcome() {
         System.out.println("Willkommen im UserStory-Programm:");
@@ -57,24 +56,6 @@ public class OutputUtils {
         System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
     }
     
-    // details hints
-    public static void parameter(String uuid, String parameter) {
-        switch (parameter) {
-            
-            case "details":
-                analyze(uuid);
-                System.out.println();
-                System.out.println("Details:");
-                details(Container.getContainer().get(uuid));
-                break;
-            case "hints":
-                //TODO
-                break;
-            default:
-                System.out.println(String.format("Der Parameter - %s ist kein gültiger. Geben Sie 'help' ein für Hilfe.", parameter));
-        }
-    }
-    
     public static void addActor(String s) {
         if (Container.getContainer().containsActor(s)) {
             System.out.println(String.format("Der Akteur %s ist schonn in der Liste.", s));
@@ -83,30 +64,115 @@ public class OutputUtils {
         System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
     }
     
-    public static void details(UserStory us) {
-        if (us.getTitel().equals("")) {
-            System.out.println("Es fehlt es ein Titel in ihrer Userstory. ");
-        } else if (countWords(us.getTitel()) > 3) {
-            System.out.println("Ihr Titel in ihrer UserStory besteht aus zuvielen Wörtern.");
+    public static void parameter(String uuid, String parameter) {
+        if (parameter.contains("- details")) {
+            analyze(uuid);
+            System.out.println();
+            System.out.println("Details:");
+            details(uuid);
         }
-        if (us.getBeschreibung().equals("Es fehlt in ihrer Userstory eine Beschreibung.")) {
-            System.out.println();
-        } else if (countWords(us.getBeschreibung()) > 50) {System.out.println();}
+        if (parameter.contains("- hints")) {
+            System.out.println("Hints:");
+            hints(uuid);
+        }
+    }
+    
+    
+    public static void details(String uuid) {
+        UserStory us = Container.getContainer().get(uuid);
+        boolean fehlerfrei = true;
+        if (us.getTitel().equals("")) {
+            System.out.println("Es fehlt ein Titel in ihrer Userstory. ");
+            fehlerfrei = false;
+        } else if (countWords(us.getTitel()) > 3) {
+            System.out.println("Ihr Titel besteht aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
+        if (us.getBeschreibung().equals("")) {
+            System.out.println("Es fehlt eine Beschreibung ihrer Userstory eine Beschreibung.");
+            fehlerfrei = false;
+        } else if (countWords(us.getBeschreibung()) > 50) {
+            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
         if (us.getDetails().equals("")) {
-            System.out.println();
-        } else if (countWords(us.getDetails()) > 30) {System.out.println();}
+            System.out.println("Es fehlen Details zu ihrer Userstory.");
+            fehlerfrei = false;
+        } else if (countWords(us.getDetails()) > 30) {
+            System.out.println("Ihre Details bestehen aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
         if (us.getAkzeptanz().equals("")) {
-            System.out.println();
-        } else if (countWords(us.getAkzeptanz()) > 30) {System.out.println();}
+            System.out.println("Es fehlen Akzeptanzkriterien in ihrer Userstory.");
+            fehlerfrei = false;
+        } else if (countWords(us.getAkzeptanz()) > 30) {
+            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
         if (us.getMehrwert().equals("")) {
-            System.out.println();
-        } else if (countWords(us.getMehrwert()) > 30) {System.out.println();}
+            System.out.println("Es fehlt eine schriftliche Mehrwertbeschreibung ihrer Userstory.");
+            fehlerfrei = false;
+        } else if (countWords(us.getMehrwert()) > 30) {
+            System.out.println("Ihre Mehrwertbeschreibung besteht aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
         if (us.getEpic().equals("")) {
-            System.out.println();
-        } else if (countWords(us.getEpic()) > 3) {System.out.println();}
+            System.out.println("Es fehlt die Epik ihrer Userstory.");
+            fehlerfrei = false;
+        } else if (countWords(us.getEpic()) > 3) {
+            System.out.println("Ihre Epik besteht aus zu vielen Wörtern.");
+            fehlerfrei = false;
+        }
         if (us.getActor().equals("")) {
-            System.out.println();
-        } else if (countWords(us.getActor()) > 2) {System.out.println();}
+            System.out.println("Es fehllt ein Akteur in ihrer Userstory.");
+            fehlerfrei = false;
+        } else if (!Container.getContainer().getActors().contains(us.getActor())) {
+            System.out.println(String.format("Der Akteuer (%s) ist nicht registriert.", us.getActor()));
+            fehlerfrei = false;
+        }
+        if (fehlerfrei) {
+            System.out.println("Alles ok!");
+        }
         
+    }
+    
+    public static void hints(String uuid) {
+        UserStory us = Container.getContainer().get(uuid);
+        
+        if (us.getTitel().equals("")) {
+            System.out.println("Geben sie ihrer Userstory einen Titel !");
+        } else if (countWords(us.getTitel()) > 3) {
+            System.out.println("Beschränken sie ihren Titel auf weniger als 3 Wörter!");
+        }
+        if (us.getBeschreibung().equals("")) {
+            System.out.println("Fügen sie in ihrer Userstory eine Beschreibung ein!");
+        } else if (countWords(us.getBeschreibung()) > 50) {
+            System.out.println("Formulieren sie ihre Beschreibung kurz und pregnant!");
+        }
+        if (us.getDetails().equals("")) {
+            System.out.println("Fügen sie in ihrer Userstory Details ein!");
+        } else if (countWords(us.getDetails()) > 30) {
+            System.out.println("Beschränken sie ihre Details auf das Wesentliche!");
+        }
+        if (us.getAkzeptanz().equals("")) {
+            System.out.println("Fügen sie in ihre Userstory Akzeptanzkriterien ein!");
+        } else if (countWords(us.getAkzeptanz()) > 30) {
+            System.out.println("Beschränken sie ihre Akzeptanzkriterien auf das Wesentliche!");
+        }
+        if (us.getMehrwert().equals("")) {
+            System.out.println("Fügen sie in ihre Userstory einen Mehrwertbeschreibung ein!");
+        } else if (countWords(us.getMehrwert()) > 30) {
+            System.out.println("Formulieren sie ihre Mehrwertbeschreibung in weniger Wörtern!");
+        }
+        if (us.getEpic().equals("")) {
+            System.out.println("Fügen sie in ihre Userstory eine Epik ein!");
+        } else if (countWords(us.getEpic()) > 3) {
+            System.out.println("Formulieren sie ihre Epik in eins bis zwei Wörtern!");
+        }
+        if (us.getActor().equals("")) {
+            System.out.println("Fügen sie in ihrer Userstory einen Akteur ein!");
+        } else if (!Container.getContainer().getActors().contains(us.getActor())) {
+            System.out.println(String.format("Fügen sie den %s in die Akteurenliste ein!" + "\n" + "Oder ändern sie ihren Akteuer('help' für Infos)", us.getActor()));
+        }
     }
 }
