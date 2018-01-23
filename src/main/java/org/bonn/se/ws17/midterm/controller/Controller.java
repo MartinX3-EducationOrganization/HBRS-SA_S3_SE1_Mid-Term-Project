@@ -82,7 +82,7 @@ public class Controller {
     
             if (strings[0].equals("enter")) {
                 try {
-                    Container.getContainer().addHistory(new EnterUS(), null);
+                    new EnterUS().execute(null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
