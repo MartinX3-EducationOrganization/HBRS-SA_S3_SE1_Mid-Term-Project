@@ -1,32 +1,37 @@
 package org.bonn.se.ws17.midterm.controller;
 
-import org.bonn.se.ws17.midterm.dto.UserStoryDTO;
-import org.bonn.se.ws17.midterm.entity.UserStory;
-import org.bonn.se.ws17.midterm.model.Container;
+import org.bonn.se.ws17.midterm.command.Command;
+import org.bonn.se.ws17.midterm.command.DumpCommand;
+import org.bonn.se.ws17.midterm.command.ExitCommand;
 import org.bonn.se.ws17.midterm.utility.IOUtils;
 import org.bonn.se.ws17.midterm.utility.InputUtils;
 import org.bonn.se.ws17.midterm.utility.OutputUtils;
-import org.bonn.se.ws17.midterm.view.OutputView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
 
 public class Controller {
+    private HashMap<String, Command> commands = null;
     
-    private void dump(boolean b) {
-        Container container = Container.getContainer();
-        List<UserStory> userStories;
-        if (b) {
-            userStories = container.getUserStories();
-        } else {
-            userStories = container.getUndoneUserStories();
-        }
-        System.out.println("Userstories:");
-        new OutputView().display(userStories.stream().map(us -> new UserStoryDTO(us)).collect(Collectors.toList()));
+    public Controller() {
+        setupCommands();
+    }
+    
+    private void setupCommands() {
+        // alle Commands werden in einer HashMap abgespeichert.
+        commands = new HashMap<String,Command>();
+        
+        // fuenf Commands werden gespeichert (ohne help)
+        // Optimierung: Auslesen der Befehle aus den Command-Klasse
+        // (hier ausgelassen zur besseren Illustration)
+        commands.put("exit", new ExitCommand() );
+        commands.put("enter", new EnterUserStoryCommand() );
+        commands.put("dump", new DumpCommand() );
+        commands.put("store", new StoreCommand() );
+        commands.put("load", new LoadCommand() );
     }
     
     public void anfang() {

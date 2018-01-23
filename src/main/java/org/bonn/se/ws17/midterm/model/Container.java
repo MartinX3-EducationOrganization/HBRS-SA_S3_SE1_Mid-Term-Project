@@ -1,6 +1,5 @@
 package org.bonn.se.ws17.midterm.model;
 
-import org.bonn.se.ws17.midterm.command.Commando;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.exception.ContainerException;
 

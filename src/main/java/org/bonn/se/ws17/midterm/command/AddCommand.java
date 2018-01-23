@@ -12,10 +12,20 @@ public class AddCommand implements Command, Cloneable {
     private Commando command;
     
     @Override
+    public void execute() {
+    
+    }
+    
+    @Override
     public void undo() {
         Container store = Container.getContainer();
         store.delete(command);
         
+    }
+    
+    @Override
+    public Command clone() throws CloneNotSupportedException {
+        return null;
     }
     
     @Override

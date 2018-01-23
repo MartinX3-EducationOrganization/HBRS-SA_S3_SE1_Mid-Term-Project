@@ -10,8 +10,9 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     private final double prioritaet;
     private final UUID id;
     private String titel, beschreibung, details, akzeptanz, epic, actor, mehrwert;
-    private int mwert, strafe, risiko, aufwand;    // 1-5
+    private int mwert, strafe, risiko, aufwand;
     private boolean done;
+    
     
     public UserStory(String titel, String beschreibung, String details, String akzeptanz, String mehrwert, String epic, int mwert, int strafe, int risiko, int aufwand, String actor) throws Exception {
         setTitel(titel);
