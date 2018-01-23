@@ -10,7 +10,6 @@ import java.util.List;
 public class IOUtils {
     
     public static void store() {
-        
         try {
             try (FileOutputStream fos = new FileOutputStream("UserStoryListe.ser")) {
                 try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -23,7 +22,6 @@ public class IOUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
     
     public static void load() {

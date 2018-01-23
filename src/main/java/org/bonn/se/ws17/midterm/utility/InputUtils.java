@@ -55,13 +55,14 @@ public class InputUtils {
     }
     
     private static int checker(Scanner sc, String s) {
-        
         while (!sc.hasNextInt()) {
             System.out.println("Bitte geben sie keine Zeichen ein!");
             System.out.println("Geben sie einen Zahlenwert für " + s + " ein.");
             sc.next();
         }
+    
         int a = sc.nextInt();
+    
         if (s.equals("Aufwand") && CalcUtils.checkFibonacci(a)) {
             return a;
         } else if (s.equals("Aufwand")) {
