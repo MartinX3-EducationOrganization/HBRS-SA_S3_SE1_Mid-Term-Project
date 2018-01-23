@@ -19,7 +19,7 @@ public class InputUtils {
     private static int risiko;
     private static int aufwand;
     
-    public static void eingabe() throws Exception {
+    public static String eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Geben Sie zunächst einen Titel für ihrer Userstory ein:");
         titel = sc.nextLine();
@@ -50,16 +50,8 @@ public class InputUtils {
         } catch (ContainerException e) {
             e.printStackTrace();
         }
-        System.out.println("Möchten sie noch eine User-Story eingeben?(y/n)");
-        while (sc.hasNext()) {
-            String a = sc.next();
-            if (a.toUpperCase().equals("N")) {
-                break;
-            } else if (a.toUpperCase().equals("Y")) {
-                eingabe();
-                break;
-            }
-        }
+        
+        return us.getId();
     }
     
     private static int checker(Scanner sc, String s) {
