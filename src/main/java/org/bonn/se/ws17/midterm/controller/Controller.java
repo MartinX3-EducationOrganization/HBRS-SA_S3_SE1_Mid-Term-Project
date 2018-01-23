@@ -1,10 +1,10 @@
 package org.bonn.se.ws17.midterm.controller;
 
+import org.bonn.se.ws17.midterm.command.Enter;
 import org.bonn.se.ws17.midterm.dto.UserStoryDTO;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.IOUtils;
-import org.bonn.se.ws17.midterm.utility.InputUtils;
 import org.bonn.se.ws17.midterm.utility.OutputUtils;
 import org.bonn.se.ws17.midterm.view.OutputView;
 
@@ -82,7 +82,7 @@ public class Controller {
     
             if (strings[0].equals("enter")) {
                 try {
-                    InputUtils.eingabe();
+                    Container.getContainer().addHistory(new Enter(), null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
