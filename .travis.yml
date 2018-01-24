@@ -7,7 +7,7 @@ addons:
       - openjdk-8-jdk
 jdk: openjdk8
 script:
-- mvn tests
+- mvn test
 - mvn cobertura:cobertura
 
 after_success:
