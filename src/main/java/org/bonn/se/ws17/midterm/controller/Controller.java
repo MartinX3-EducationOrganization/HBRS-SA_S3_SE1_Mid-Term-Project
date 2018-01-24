@@ -23,6 +23,8 @@ public class Controller {
         Container.getContainer().addCommand("analyze", new Analyze());
         Container.getContainer().addCommand("undo", new Undo());
         Container.getContainer().addCommand("help", new Help());
+        Container.getContainer().addCommand("addElement", new AddElement());
+        Container.getContainer().addCommand("actors", new Actor());
     }
     
     public void anfang() {

@@ -20,7 +20,7 @@ public class Container {
     }
     
     public static Container getContainer() {
-        return container;
+        return Container.container;
     }
     
     public List<UserStory> getUserStories() {
@@ -60,6 +60,8 @@ public class Container {
     public void removeUS(String usid) {
         userStories.remove(usid);
     }
+    
+    public void removeActor(String name) { actors.remove(name);}
     
     public int size() {
         return userStories.size();
