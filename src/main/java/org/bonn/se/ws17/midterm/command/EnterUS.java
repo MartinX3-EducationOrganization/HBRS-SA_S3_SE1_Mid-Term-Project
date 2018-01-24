@@ -20,7 +20,7 @@ public class EnterUS implements Command, Cloneable {
     
         Container.getContainer().addHistory(clone());
     
-        InputUtils.again();
+        InputUtils.againUSEnter();
     }
     
     @Override

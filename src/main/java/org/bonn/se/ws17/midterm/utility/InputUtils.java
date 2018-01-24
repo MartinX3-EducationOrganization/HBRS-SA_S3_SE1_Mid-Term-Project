@@ -76,7 +76,7 @@ public class InputUtils {
         }
     }
     
-    public static void again() {
+    public static void againUSEnter() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Möchten sie noch eine Userstory eingeben? [Y|N]");
         while (sc.hasNextLine()) {
@@ -91,5 +91,16 @@ public class InputUtils {
                 System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");
             }
         }
+    }
+    
+    public static String addActor(String s) {
+        if (Container.getContainer().containsActor(s)) {
+            System.out.println(String.format("Der Akteur %s ist schonn in der Liste.", s));
+            return null;
+        }
+        
+        System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
+        
+        return Container.getContainer().addActor(s);
     }
 }

@@ -39,8 +39,9 @@ public class Container {
         return userStories.get(uuid);
     }
     
-    public void addActor(String s) {
-        actors.add(s);
+    public String addActor(String actorKey) {
+        actors.add(actorKey);
+        return actorKey;
     }
     
     public void addUS(UserStory us) throws ContainerException {
@@ -76,7 +77,9 @@ public class Container {
     }
     
     public void undoHistory() {
-        history.pop().undo();
+        if (!history.empty()) {
+            history.pop().undo();
+        }
     }
     
     public Set<String> getCommands() {

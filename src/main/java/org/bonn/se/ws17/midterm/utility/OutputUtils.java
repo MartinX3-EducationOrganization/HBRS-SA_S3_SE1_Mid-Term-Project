@@ -46,14 +46,6 @@ public class OutputUtils {
         System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
     }
     
-    public static void addActor(String s) {
-        if (Container.getContainer().containsActor(s)) {
-            System.out.println(String.format("Der Akteur %s ist schonn in der Liste.", s));
-        }
-        Container.getContainer().addActor(s);
-        System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
-    }
-    
     public static void details(String uuid) {
         UserStory us = Container.getContainer().get(uuid);
         System.out.println();

@@ -2,7 +2,7 @@ package org.bonn.se.ws17.midterm.command;
 
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.ErrorUtils;
-import org.bonn.se.ws17.midterm.utility.OutputUtils;
+import org.bonn.se.ws17.midterm.utility.InputUtils;
 
 public class AddElement implements Command {
     private String name;
@@ -16,8 +16,10 @@ public class AddElement implements Command {
         int paralength = params.length;
         if (paralength == 3) {
             if (params[0].equals("-") && params[1].equals("actor")) {
-                OutputUtils.addActor(params[2]);
-                Container.getContainer().addHistory(clone());
+                setName(InputUtils.addActor(params[2]));
+                if (name != null) {
+                    Container.getContainer().addHistory(clone());
+                }
             }
         } else {
             String str = String.join(" ", params);
