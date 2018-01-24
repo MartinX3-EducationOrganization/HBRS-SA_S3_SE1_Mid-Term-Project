@@ -23,7 +23,6 @@ public class AddElement implements Command {
             String str = String.join(" ", params);
             ErrorUtils.cmdNotFound(str);
         }
-        
     }
     
     @Override
