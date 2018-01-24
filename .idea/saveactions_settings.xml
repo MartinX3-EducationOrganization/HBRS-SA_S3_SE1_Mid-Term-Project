@@ -4,14 +4,17 @@
     <option name="actions">
       <set>
         <option value="activate" />
+        <option value="activateOnShortcut" />
         <option value="noActionIfCompileErrors" />
         <option value="organizeImports" />
         <option value="reformat" />
         <option value="reformatChangedCode" />
         <option value="rearrange" />
-        <option value="fieldCanBeFinal" />
+        <option value="compile" />
         <option value="localCanBeFinal" />
         <option value="unqualifiedFieldAccess" />
+        <option value="unqualifiedMethodAccess" />
+        <option value="unqualifiedStaticMemberAccess" />
         <option value="missingOverrideAnnotation" />
         <option value="useBlocks" />
         <option value="unnecessaryThis" />
@@ -22,5 +25,6 @@
         <option value="unnecessarySemicolon" />
       </set>
     </option>
+    <option name="configurationPath" value="" />
   </component>
 </project>

@@ -188,8 +188,4 @@ public class OutputUtils {
             System.out.println(String.format("Fügen sie den %s in die Akteurenliste ein!" + "\n" + "Oder ändern sie ihren Akteuer('help' für Infos)", us.getActor()));
         }
     }
-    
-    public static void wrongInput(String string) {
-        System.out.println(String.format("Der Befehl: %s wurde nicht erkannt. Für Hilfe geben sie 'help' ein.", string));
-    }
 }

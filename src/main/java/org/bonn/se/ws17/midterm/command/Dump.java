@@ -14,7 +14,6 @@ public class Dump implements Command {
     public void execute(String[] params) {
         Container container = Container.getContainer();
         List<UserStory> userStories = container.getUserStories();
-        System.out.println("Userstories:");
         new OutputView().display(userStories.stream().map(UserStoryDTO::new).collect(Collectors.toList()));
     }
     

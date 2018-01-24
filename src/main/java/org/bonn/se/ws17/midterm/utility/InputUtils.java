@@ -22,29 +22,29 @@ public class InputUtils {
     public static String eingabe() throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.println("Geben Sie zunächst einen Titel für ihrer Userstory ein:");
-        titel = sc.nextLine();
+        InputUtils.titel = sc.nextLine();
         System.out.println("Aus welcher Sicht ist die Userstory verfasst? (Akteur)");
-        actor = sc.nextLine();
+        InputUtils.actor = sc.nextLine();
         System.out.println("Geben Sie eine kurze Beschreibung ihrer Userstory ein:");
-        beschreibung = sc.nextLine();
+        InputUtils.beschreibung = sc.nextLine();
         System.out.println("Geben Sie jetzt ihre Details zur Userstory ein:");
-        details = sc.nextLine();
+        InputUtils.details = sc.nextLine();
         System.out.println("Es folgen die Akzeptanzkriterien ihrer Userstory:");
-        acceptCrit = sc.nextLine();
+        InputUtils.acceptCrit = sc.nextLine();
         System.out.println("Unter welcher Epic lässt sich ihre Userstory einordnen?");
-        epic = sc.nextLine();
+        InputUtils.epic = sc.nextLine();
         System.out.println("Wie schätzen sie den Mehrwert ein? (schriftlich)");
-        mehrwert = sc.nextLine();
+        InputUtils.mehrwert = sc.nextLine();
         System.out.println("Welchen Mehrwert schätzen Sie ? (value 1-5)");
-        mwert = checker(sc, "Mehrwert");
+        InputUtils.mwert = InputUtils.checker(sc, "Mehrwert");
         System.out.println("Welchen Wert hat die Strafe? (1-5)");
-        strafe = checker(sc, "Strafe");
+        InputUtils.strafe = InputUtils.checker(sc, "Strafe");
         System.out.println("Wie hoch schätzen Sie das Risiko ein? (1-5)");
-        risiko = checker(sc, "Risiko");
+        InputUtils.risiko = InputUtils.checker(sc, "Risiko");
         System.out.println("Wie hoch dürfte der Aufwand sein?");
-        aufwand = checker(sc, "Aufwand");
+        InputUtils.aufwand = InputUtils.checker(sc, "Aufwand");
     
-        UserStory us = new UserStory(titel, beschreibung, details, acceptCrit, mehrwert, epic, mwert, strafe, risiko, aufwand, actor);
+        UserStory us = new UserStory(InputUtils.titel, InputUtils.beschreibung, InputUtils.details, InputUtils.acceptCrit, InputUtils.mehrwert, InputUtils.epic, InputUtils.mwert, InputUtils.strafe, InputUtils.risiko, InputUtils.aufwand, InputUtils.actor);
         try {
             Container.getContainer().add(us);
         } catch (ContainerException e) {
@@ -67,12 +67,28 @@ public class InputUtils {
             return a;
         } else if (s.equals("Aufwand")) {
             System.out.println("Die Zahl " + a + " ist keine Fibonacci-Zahl." + "\n" + "Bitte korrigieren sie ihre Eingabe.");
-            return (checker(sc, s));
+            return (InputUtils.checker(sc, s));
         } else if (a > 5 || a < 1) {
             System.out.println("Bitte korriegieren Sie ihre Eingabe zu: " + a + " (Nur Werte von 1-5)");
-            return checker(sc, s);
+            return InputUtils.checker(sc, s);
         } else {
             return a;
+        }
+    }
+    
+    public static void again() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Möchten sie noch eine Userstory eingeben?");
+        while (sc.hasNextLine()) {
+            if (sc.nextLine().toUpperCase().equals("Y")) {
+                System.out.println("ja ANKLICKT");
+                //TODO
+            } else if (sc.nextLine().toUpperCase().equals("N")) {
+                System.out.println("NEIN ANKLICKT");
+                break;
+            } else {
+                System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");
+            }
         }
     }
 }

@@ -6,23 +6,25 @@ import org.bonn.se.ws17.midterm.view.Terminal;
 
 import java.util.Arrays;
 import java.util.HashMap;
-
+import java.util.Iterator;
+import java.util.Set;
 
 
 public class Controller {
-    private final HashMap<String, Command> commands = null;
+    private HashMap<String, Command> commands = null;
     
     public Controller() {
         setupCommands();
     }
     
     private void setupCommands() {
-        HashMap<String, Command> commands = new HashMap<>();
+        commands = new HashMap<>();
         commands.put("exit", new Exit());
         commands.put("enter", new EnterUS());
         commands.put("dump", new Dump());
         commands.put("store", new Store());
         commands.put("load", new Load());
+        commands.put("analyze", new Analyze());
     }
     
     public void anfang() {
@@ -38,17 +40,21 @@ public class Controller {
     
             String[] strings = strInput.split(" ");
             if (strings[0].equals("help")) {
-                OutputUtils.help();
+                System.out.println("Folgende Befehle stehen zur Verfuegung:");
+                Set<String> kommandos = commands.keySet();
+                Iterator<String> it = kommandos.iterator();
+    
+                while (it.hasNext()) {
+                    System.out.println(it.next());
+                }
             } else {
                 Command command = commands.get(strings[0]);
                 if ((command == null)) {
-                    System.out.println(String.format("Der Befehlt nicht unterstuetzt!", strings[0]));
+                    System.out.println(String.format("Der Befehl: " + "\"" + "%s" + "\" wird nicht unterstuetzt!", strings[0]));
                 } else {
                     command.execute(Arrays.copyOfRange(strings, 1, strings.length));
                 }
             }
-    
-    
         }
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 public class OutputView implements OutputList {
     @Override
     public void display(List<UserStoryDTO> listDTO) {
+        System.out.println("Userstories:");
         Collections.sort(listDTO);
         for (UserStoryDTO us : listDTO) {
             System.out.println(us.toString());

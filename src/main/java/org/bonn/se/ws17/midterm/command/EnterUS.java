@@ -17,6 +17,7 @@ public class EnterUS implements Command, Cloneable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        InputUtils.again(); // Nicht gut?
     }
     
     @Override
