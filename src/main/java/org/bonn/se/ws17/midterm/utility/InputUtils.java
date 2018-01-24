@@ -46,7 +46,7 @@ public class InputUtils {
     
         UserStory us = new UserStory(InputUtils.titel, InputUtils.beschreibung, InputUtils.details, InputUtils.acceptCrit, InputUtils.mehrwert, InputUtils.epic, InputUtils.mwert, InputUtils.strafe, InputUtils.risiko, InputUtils.aufwand, InputUtils.actor);
         try {
-            Container.getContainer().add(us);
+            Container.getContainer().addUS(us);
         } catch (ContainerException e) {
             e.printStackTrace();
         }

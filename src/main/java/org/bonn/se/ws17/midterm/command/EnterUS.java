@@ -17,6 +17,9 @@ public class EnterUS implements Command, Cloneable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    
+        Container.getContainer().addHistory(clone());
+        
         InputUtils.again(); // Nicht gut?
     }
     
@@ -28,7 +31,9 @@ public class EnterUS implements Command, Cloneable {
     @Override
     public Command clone() {
         EnterUS cmd = new EnterUS();
+    
         cmd.setUsid(usid);
+    
         return cmd;
     }
 }

@@ -13,8 +13,8 @@ public class ContainerTest {
     @Before
     public void setUp() throws Exception {
         us = new UserStory("titel", "b", "d", "a", "e", "e", 1, 1, 1, 1, "actor1");
-        
-        Container.getContainer().add(us);
+    
+        Container.getContainer().addUS(us);
     }
     
     @Test

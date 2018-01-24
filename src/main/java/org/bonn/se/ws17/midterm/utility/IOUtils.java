@@ -45,7 +45,7 @@ public class IOUtils {
         if (userStories != null) {
             for (UserStory us : userStories) {
                 try {
-                    container.add(us);
+                    container.addUS(us);
                 } catch (ContainerException e) {
                     System.out.println("Fehler beim laden der Userstories.");
                     return;

@@ -43,7 +43,7 @@ public class Container {
         actors.add(s);
     }
     
-    public void add(UserStory us) throws ContainerException {
+    public void addUS(UserStory us) throws ContainerException {
         if (!contains(us.getId())) {
             userStories.put(us.getId(), us);
         } else {

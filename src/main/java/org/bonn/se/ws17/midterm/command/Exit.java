@@ -7,7 +7,6 @@ public class Exit implements Command {
     public void execute(String[] params) {
         System.out.println("Aufwiedersehen und bis zum naechsten Mal!");
         System.exit(0);
-        
     }
     
     @Override
