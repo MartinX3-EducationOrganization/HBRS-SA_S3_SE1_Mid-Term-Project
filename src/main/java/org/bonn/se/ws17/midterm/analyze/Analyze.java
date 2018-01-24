@@ -10,7 +10,7 @@ public class Analyze {
     }
     
     /**
-     * Punkteabzug für fehlende Inhalte oder zu lange Texte. (zu viel Text Abzug 5)
+     * Punkteabzug für fehlende Inhalte oder zu lange Texte.
      */
     private static int missing(UserStory us) {
         int malus = 0; // max -75pkt

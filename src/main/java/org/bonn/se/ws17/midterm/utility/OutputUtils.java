@@ -54,58 +54,58 @@ public class OutputUtils {
         boolean fehlerfrei = true;
     
         if (us.getTitel().equals("")) {
-            System.out.println("Es fehlt ein Titel in ihrer Userstory. ");
+            System.out.println("Es fehlt ein Titel in ihrer Userstory.(-5%)");
             fehlerfrei = false;
         } else if (countWords(us.getTitel()) > 3) {
-            System.out.println("Ihr Titel besteht aus zu vielen Wörtern.");
+            System.out.println("Ihr Titel besteht aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getBeschreibung().equals("")) {
-            System.out.println("Es fehlt eine Beschreibung ihrer Userstory.");
+            System.out.println("Es fehlt eine Beschreibung ihrer Userstory.(-10%)");
             fehlerfrei = false;
         } else if (countWords(us.getBeschreibung()) > 50) {
-            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.");
+            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getDetails().equals("")) {
-            System.out.println("Es fehlen Details zu ihrer Userstory.");
+            System.out.println("Es fehlen Details zu ihrer Userstory.(-15%)");
             fehlerfrei = false;
         } else if (countWords(us.getDetails()) > 30) {
-            System.out.println("Ihre Details bestehen aus zu vielen Wörtern.");
+            System.out.println("Ihre Details bestehen aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getAkzeptanz().equals("")) {
-            System.out.println("Es fehlen Akzeptanzkriterien in ihrer Userstory.");
+            System.out.println("Es fehlen Akzeptanzkriterien in ihrer Userstory.(-15%)");
             fehlerfrei = false;
         } else if (countWords(us.getAkzeptanz()) > 30) {
-            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.");
+            System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getMehrwert().equals("")) {
-            System.out.println("Es fehlt eine schriftliche Mehrwertbeschreibung ihrer Userstory.");
+            System.out.println("Es fehlt eine schriftliche Mehrwertbeschreibung ihrer Userstory.(-15%)");
             fehlerfrei = false;
         } else if (countWords(us.getMehrwert()) > 30) {
-            System.out.println("Ihre Mehrwertbeschreibung besteht aus zu vielen Wörtern.");
+            System.out.println("Ihre Mehrwertbeschreibung besteht aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getEpic().equals("")) {
-            System.out.println("Es fehlt die Epik ihrer Userstory.");
+            System.out.println("Es fehlt die Epic ihrer Userstory.(-5%)");
             fehlerfrei = false;
         } else if (countWords(us.getEpic()) > 3) {
-            System.out.println("Ihre Epik besteht aus zu vielen Wörtern.");
+            System.out.println("Ihre Epic besteht aus zu vielen Wörtern.(-5%)");
             fehlerfrei = false;
         }
     
         if (us.getActor().equals("")) {
-            System.out.println("Es fehllt ein Akteur in ihrer Userstory.");
+            System.out.println("Es fehllt ein Akteur in ihrer Userstory.(-10%)");
             fehlerfrei = false;
         } else if (!Container.getContainer().getActors().contains(us.getActor())) {
-            System.out.println(String.format("Der Akteuer (%s) ist nicht registriert.", us.getActor()));
+            System.out.println("Der Akteuer: " + us.getActor() + "  ist nicht registriert.(-10%)");
             fehlerfrei = false;
         }
     
@@ -151,9 +151,9 @@ public class OutputUtils {
         }
     
         if (us.getEpic().equals("")) {
-            System.out.println("Fügen sie in ihre Userstory eine Epik ein!");
+            System.out.println("Fügen sie in ihre Userstory eine Epic ein!");
         } else if (countWords(us.getEpic()) > 3) {
-            System.out.println("Formulieren sie ihre Epik in eins bis zwei Wörtern!");
+            System.out.println("Formulieren sie ihre Epic in eins bis zwei Wörtern!");
         }
     
         if (us.getActor().equals("")) {
