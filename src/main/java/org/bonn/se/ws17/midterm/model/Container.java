@@ -82,6 +82,10 @@ public class Container {
         }
     }
     
+    public boolean undoHistoryEmpty() {
+        return history.isEmpty();
+    }
+    
     public Set<String> getCommands() {
         return commands.keySet();
     }
