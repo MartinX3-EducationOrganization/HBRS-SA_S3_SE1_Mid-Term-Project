@@ -1,30 +1,28 @@
 package org.bonn.se.ws17.midterm.controller;
 
 import org.bonn.se.ws17.midterm.command.*;
+import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.OutputUtils;
 import org.bonn.se.ws17.midterm.view.Terminal;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 
 public class Controller {
-    private HashMap<String, Command> commands = null;
     
     public Controller() {
         setupCommands();
     }
     
     private void setupCommands() {
-        commands = new HashMap<>();
-        commands.put("exit", new Exit());
-        commands.put("enter", new EnterUS());
-        commands.put("dump", new Dump());
-        commands.put("store", new Store());
-        commands.put("load", new Load());
-        commands.put("analyze", new Analyze());
+        Container.getContainer().addCommand("exit", new Exit());
+        Container.getContainer().addCommand("enter", new EnterUS());
+        Container.getContainer().addCommand("dump", new Dump());
+        Container.getContainer().addCommand("store", new Store());
+        Container.getContainer().addCommand("load", new Load());
+        Container.getContainer().addCommand("analyze", new Analyze());
+        Container.getContainer().addCommand("undo", new Undo());
+        Container.getContainer().addCommand("help", new Help());
     }
     
     public void anfang() {
@@ -39,22 +37,8 @@ public class Controller {
             }
     
             String[] strings = strInput.split(" ");
-            if (strings[0].equals("help")) {
-                System.out.println("Folgende Befehle stehen zur Verfuegung:");
-                Set<String> kommandos = commands.keySet();
-                Iterator<String> it = kommandos.iterator();
     
-                while (it.hasNext()) {
-                    System.out.println(it.next());
-                }
-            } else {
-                Command command = commands.get(strings[0]);
-                if ((command == null)) {
-                    System.out.println(String.format("Der Befehl: " + "\"" + "%s" + "\" wird nicht unterstuetzt!", strings[0]));
-                } else {
-                    command.execute(Arrays.copyOfRange(strings, 1, strings.length));
-                }
-            }
+            Container.getContainer().getCommand(strings[0]).execute(Arrays.copyOfRange(strings, 1, strings.length));
         }
     }
 }

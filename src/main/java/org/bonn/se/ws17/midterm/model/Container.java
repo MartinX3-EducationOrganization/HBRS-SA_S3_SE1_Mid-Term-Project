@@ -3,10 +3,9 @@ package org.bonn.se.ws17.midterm.model;
 import org.bonn.se.ws17.midterm.command.Command;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.exception.ContainerException;
+import org.bonn.se.ws17.midterm.utility.ErrorUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -15,6 +14,7 @@ public class Container {
     private final Stack<Command> history = new Stack<>();
     private final List<String> actors = new ArrayList<>();
     private final ConcurrentHashMap<String, UserStory> userStories = new ConcurrentHashMap<>();
+    private final HashMap<String, Command> commands = new HashMap<>();
     
     private Container() {
     }
@@ -75,5 +75,22 @@ public class Container {
     
     public void undoHistory() {
         history.pop().undo();
+    }
+    
+    public Set<String> getCommands() {
+        return commands.keySet();
+    }
+    
+    public void addCommand(String cmdKey, Command cmdObject) {
+        commands.put(cmdKey, cmdObject);
+    }
+    
+    public Command getCommand(String cmdKey) {
+        Command cmd = commands.get(cmdKey);
+        if (cmd == null) {
+            ErrorUtils.cmdNotFound(cmdKey);
+            return commands.get("help");
+        }
+        return cmd;
     }
 }
