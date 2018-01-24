@@ -15,18 +15,8 @@ public class OutputUtils {
         System.out.println("Für Hilfe der Kommandos, geben Sie bitte " + "'help'" + " ein.");
     }
     
-    public static void help() {
-        System.out.print("Folgende Befehle stehen zur Verfuegung:" + "\n" +
-                "'enter' > Eingabe der UserStory" + "\n" +
-                "'store' > Speichert die UserStories auf den Datenträger." + "\n" +
-                "'load' > Ladet die UserStories vom Datenträger." + "\n" +
-                "'dump' > Sortiert die vorhanden UserStories und gibt diese aus." + "\n" +
-                "'dumpNotDone' > Zeigt alle Userstories an die nocht nicht abgeschlossen sind." + "\n" +
-                "'help' > Zeigt alle Commandos an." + "\n");
-    }
-    
     public static void analyze(String usid) {
-        if (isUUID(usid)) {
+        if (OutputUtils.isUUID(usid)) {
             if (Container.getContainer().contains(usid)) {
                 int punkte = CalcUtils.bewertung(Container.getContainer().get(usid));
                 System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", usid));
@@ -52,7 +42,7 @@ public class OutputUtils {
         for (int i = 0; i < list.size(); i++) {
             bewertung += CalcUtils.bewertung(list.get(i));
         }
-        System.out.println(String.format("Ihre %d User Stories haben durchschnittlich folgende Qualität:", Container.getContainer().size()));
+        System.out.println(String.format("Ihr(e) %d User-Stories haben durchschnittlich folgende Qualität:", Container.getContainer().size()));
         System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
     }
     
@@ -64,21 +54,10 @@ public class OutputUtils {
         System.out.println(String.format("Der Akteur %s wurde im System registriert!", s));
     }
     
-    public static void parameter(String uuid, String parameter) {
-        if (parameter.contains("- details")) {
-            analyze(uuid);
-            System.out.println();
-            System.out.println("Details:");
-            details(uuid);
-        }
-        if (parameter.contains("- hints")) {
-            System.out.println("Hints:");
-            hints(uuid);
-        }
-    }
-    
     public static void details(String uuid) {
         UserStory us = Container.getContainer().get(uuid);
+        System.out.println();
+        System.out.println("Details:");
     
         boolean fehlerfrei = true;
     
@@ -91,7 +70,7 @@ public class OutputUtils {
         }
     
         if (us.getBeschreibung().equals("")) {
-            System.out.println("Es fehlt eine Beschreibung ihrer Userstory eine Beschreibung.");
+            System.out.println("Es fehlt eine Beschreibung ihrer Userstory.");
             fehlerfrei = false;
         } else if (countWords(us.getBeschreibung()) > 50) {
             System.out.println("Ihre Beschreibung besteht aus zu vielen Wörtern.");
@@ -145,6 +124,9 @@ public class OutputUtils {
     
     public static void hints(String uuid) {
         UserStory us = Container.getContainer().get(uuid);
+    
+        System.out.println();
+        System.out.println("Hints:");
         
         if (us.getTitel().equals("")) {
             System.out.println("Geben sie ihrer Userstory einen Titel !");

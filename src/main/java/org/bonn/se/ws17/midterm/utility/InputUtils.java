@@ -78,13 +78,14 @@ public class InputUtils {
     
     public static void again() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Möchten sie noch eine Userstory eingeben?");
+        System.out.println("Möchten sie noch eine Userstory eingeben? [Y|N]");
         while (sc.hasNextLine()) {
-            if (sc.nextLine().toUpperCase().equals("Y")) {
-                System.out.println("ja ANKLICKT");
-                //TODO
-            } else if (sc.nextLine().toUpperCase().equals("N")) {
-                System.out.println("NEIN ANKLICKT");
+            String s = sc.nextLine();
+            if (s.toUpperCase().equals("Y")) {
+                Container.getContainer().getCommand("enter").execute(null);
+            }
+            if (s.toUpperCase().equals("N")) {
+                System.out.println("Sie befinden sich wieder im Menü. Für Hilfe zu den Befehlen geben sie bitte " + "\"" + "help" + "\"" + " ein");
                 break;
             } else {
                 System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");

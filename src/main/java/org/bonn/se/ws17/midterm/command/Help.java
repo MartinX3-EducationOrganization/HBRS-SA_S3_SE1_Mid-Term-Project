@@ -7,7 +7,7 @@ import java.util.Set;
 public class Help implements Command {
     @Override
     public void execute(String[] params) {
-        System.out.println("Folgende Befehle stehen zur Verfuegung:");
+        System.out.println("Folgende Befehle stehen zur Verfügung:");
         Set<String> commandKeys = Container.getContainer().getCommands();
         
         for (String cmdKey : commandKeys) {
