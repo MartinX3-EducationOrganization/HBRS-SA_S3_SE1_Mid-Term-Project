@@ -8,33 +8,34 @@ import org.bonn.se.ws17.midterm.view.Terminal;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputUtils {
     public static String eingabe() throws Exception {
         UserStory us = new UserStory();
     
         try (Terminal t = new Terminal()) {
-            us.setTitel(readText(t, "Geben Sie zunächst einen Titel für ihrer Userstory ein:"));
-        
-            us.setActor(readText(t, "Aus welcher Sicht ist die Userstory verfasst? (Akteur)"));
-        
-            us.setBeschreibung(readText(t, "Geben Sie eine kurze Beschreibung ihrer Userstory ein:"));
-        
-            us.setDetails(readText(t, "Geben Sie jetzt ihre Details zur Userstory ein:"));
-        
-            us.setAkzeptanz(readText(t, "Es folgen die Akzeptanzkriterien ihrer Userstory:"));
-        
-            us.setEpic(readText(t, "Unter welcher Epic lässt sich ihre Userstory einordnen?"));
-        
-            us.setMehrwert(readText(t, "Wie schätzen sie den Mehrwert ein? (schriftlich)"));
-        
-            us.setMwert(readInteger(t, "Welchen Mehrwert schätzen Sie ? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
-        
-            us.setStrafe(readInteger(t, "Welchen Wert hat die Strafe? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
-        
-            us.setRisiko(readInteger(t, "Wie hoch schätzen Sie das Risiko ein? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
-        
-            us.setAufwand(readInteger(t, "Wie hoch dürfte der Aufwand sein? (%s)", CalcUtils.getFibonacciZahlen()));
+            us.setTitel(InputUtils.readText(t, "Geben Sie zunächst einen Titel für ihrer Userstory ein:"));
+    
+            us.setActor(InputUtils.readText(t, "Aus welcher Sicht ist die Userstory verfasst? (Akteur)"));
+    
+            us.setBeschreibung(InputUtils.readText(t, "Geben Sie eine kurze Beschreibung ihrer Userstory ein:"));
+    
+            us.setDetails(InputUtils.readText(t, "Geben Sie jetzt ihre Details zur Userstory ein:"));
+    
+            us.setAkzeptanz(InputUtils.readText(t, "Es folgen die Akzeptanzkriterien ihrer Userstory:"));
+    
+            us.setEpic(InputUtils.readText(t, "Unter welcher Epic lässt sich ihre Userstory einordnen?"));
+    
+            us.setMehrwert(InputUtils.readText(t, "Wie schätzen sie den Mehrwert ein? (schriftlich)"));
+    
+            us.setMwert(InputUtils.readInteger(t, "Welchen Mehrwert schätzen Sie ? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+    
+            us.setStrafe(InputUtils.readInteger(t, "Welchen Wert hat die Strafe? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+    
+            us.setRisiko(InputUtils.readInteger(t, "Wie hoch schätzen Sie das Risiko ein? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+    
+            us.setAufwand(InputUtils.readInteger(t, "Wie hoch dürfte der Aufwand sein? (%s)", CalcUtils.getFibonacciZahlen()));
         }
         
         try {
@@ -48,7 +49,7 @@ public class InputUtils {
     
     private static int readInteger(Terminal t, String msg, List<Integer> ints) {
         int entryInt = 0;
-        System.out.println(String.format(msg, String.join(", ", ints.toArray(new String[0]))));
+        System.out.println(String.format(msg, String.join(", ", ints.stream().map(Object::toString).collect(Collectors.toList()))));
         
         String entry = t.readLine();
         
@@ -59,7 +60,7 @@ public class InputUtils {
             }
         } catch (NumberFormatException nfe) {
             System.out.println("Bitte geben sie eine gültige Zahl ein!");
-            readInteger(t, msg, ints);
+            InputUtils.readInteger(t, msg, ints);
         }
         
         return entryInt;
