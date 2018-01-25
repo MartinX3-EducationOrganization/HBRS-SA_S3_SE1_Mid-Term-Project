@@ -21,7 +21,7 @@ public class IOUtils {
     }
     
     public static void load() {
-        Container.getContainer().clear();
+        Container.getContainer().clearUS();
     
         List<UserStory> userStories = null;
         try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {

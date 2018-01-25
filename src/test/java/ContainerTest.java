@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class ContainerTest {
     
-    private UserStory us = new UserStory();
+    private final UserStory us = new UserStory();
     
     @Before
     public void setUp() throws Exception {
@@ -35,6 +35,6 @@ public class ContainerTest {
     
     @After
     public void tearDown() {
-        Container.getContainer().clear();
+        Container.getContainer().clearUS();
     }
 }

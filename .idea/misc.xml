@@ -10,4 +10,36 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="UMLDiagramComponent">
+    <diagram name="ClassDiagramm">
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.utility.CalcUtils" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Store" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.analyze.Analyze" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Actor" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Exit" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.view.Terminal" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.entity.UserStory" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Command" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.model.Container" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Analyze" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.AddElement" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Load" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.EnterUS" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.DumpNotDone" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Undo" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.utility.InputUtils" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Dump" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.utility.OutputUtils" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.utility.ErrorUtils" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.exception.ContainerException" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.command.Help" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.Main" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.utility.IOUtils" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.view.OutputList" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.dto.UserStoryDTO" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.controller.Controller" />
+      <command command-class="de.frag.umlplugin.uml.command.AddClassCommand" psi-class="org.bonn.se.ws17.midterm.view.OutputView" />
+      <compartment-visibility />
+    </diagram>
+  </component>
 </project>

@@ -31,7 +31,7 @@ public class Container {
         return actors;
     }
     
-    public UserStory get(String uuid) {
+    public UserStory getUS(String uuid) {
         return userStories.get(uuid);
     }
     
@@ -41,14 +41,14 @@ public class Container {
     }
     
     public void addUS(UserStory us) throws ContainerException {
-        if (!contains(us.getId())) {
+        if (!containsUS(us.getId())) {
             userStories.put(us.getId(), us);
         } else {
             throw new ContainerException(us.getId());
         }
     }
     
-    public boolean contains(String usid) {
+    public boolean containsUS(String usid) {
         return userStories.containsKey(usid);
     }
     
@@ -64,7 +64,7 @@ public class Container {
         return userStories.size();
     }
     
-    public void clear() {
+    public void clearUS() {
         userStories.clear();
     }
     
@@ -73,13 +73,11 @@ public class Container {
     }
     
     public void undoHistory() {
-        if (!history.empty()) {
+        if (history.isEmpty()) {
+            System.out.println("nothing to undo.");
+        } else {
             history.pop().undo();
         }
-    }
-    
-    public boolean undoHistoryEmpty() {
-        return history.isEmpty();
     }
     
     public Set<String> getCommands() {

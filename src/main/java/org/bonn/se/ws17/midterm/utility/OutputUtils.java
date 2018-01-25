@@ -17,8 +17,8 @@ public class OutputUtils {
     }
     
     public static void analyze(String usid) {
-        if (Container.getContainer().contains(usid)) {
-            int punkte = CalcUtils.bewertung(Container.getContainer().get(usid));
+        if (Container.getContainer().containsUS(usid)) {
+            int punkte = CalcUtils.bewertung(Container.getContainer().getUS(usid));
             System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", usid));
             System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
         } else {
@@ -48,7 +48,7 @@ public class OutputUtils {
     }
     
     private static void detailsAnalyze(String uuid) {
-        UserStory us = Container.getContainer().get(uuid);
+        UserStory us = Container.getContainer().getUS(uuid);
         System.out.println();
         System.out.println("Details:");
         
@@ -64,7 +64,7 @@ public class OutputUtils {
     }
     
     private static void hintsAnalyze(String uuid) {
-        UserStory us = Container.getContainer().get(uuid);
+        UserStory us = Container.getContainer().getUS(uuid);
     
         System.out.println();
         System.out.println("Hints:");

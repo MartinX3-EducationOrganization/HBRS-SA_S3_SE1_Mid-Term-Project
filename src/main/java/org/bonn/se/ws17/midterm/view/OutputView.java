@@ -10,12 +10,11 @@ public class OutputView implements OutputList {
     public void display(List<UserStoryDTO> listDTO) {
         if (listDTO.isEmpty()) {
             System.out.println("Keine Userstory vorhanden.");
-        
         } else {
             System.out.println("Userstories:");
-        
+    
             Collections.sort(listDTO);
-        
+    
             listDTO.forEach(us -> {
                 System.out.println(us.toString());
                 if (listDTO.indexOf(us) != listDTO.size() - 1) {

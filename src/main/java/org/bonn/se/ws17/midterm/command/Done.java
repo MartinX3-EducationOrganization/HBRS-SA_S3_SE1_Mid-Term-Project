@@ -14,10 +14,10 @@ public class Done implements Command {
             ErrorUtils.cmdNotFound(String.join(" ", params));
             return;
         }
-        if (Container.getContainer().contains(params[0])) {
-            oldDoneValue = Container.getContainer().get(params[0]).getDone();
+        if (Container.getContainer().containsUS(params[0])) {
+            oldDoneValue = Container.getContainer().getUS(params[0]).isDone();
             uuid = params[0];
-            Container.getContainer().get(params[0]).setDone(true);
+            Container.getContainer().getUS(params[0]).setDone(true);
         } else {
             System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", params[0]));
         }
@@ -33,8 +33,8 @@ public class Done implements Command {
     
     @Override
     public void undo() {
-        if (Container.getContainer().contains(uuid)) {
-            Container.getContainer().get(uuid).setDone(oldDoneValue);
+        if (Container.getContainer().containsUS(uuid)) {
+            Container.getContainer().getUS(uuid).setDone(oldDoneValue);
         }
     }
     
