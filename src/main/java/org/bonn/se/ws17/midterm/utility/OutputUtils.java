@@ -26,7 +26,7 @@ public class OutputUtils {
         }
     }
     
-    private static boolean isUUID(String usid) {
+    public static boolean isUUID(String usid) {
         try {
             UUID.fromString(usid);
             return true;

@@ -25,6 +25,7 @@ public class Controller {
         Container.getContainer().addCommand("help", new Help());
         Container.getContainer().addCommand("addElement", new AddElement());
         Container.getContainer().addCommand("actors", new Actor());
+        Container.getContainer().addCommand("done", new Done());
     }
     
     public void anfang() {
