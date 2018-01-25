@@ -17,7 +17,7 @@ public class Controller {
         Container.getContainer().addCommand("exit", new Exit());
         Container.getContainer().addCommand("enter", new EnterUS());
         Container.getContainer().addCommand("dump", new Dump());
-        Container.getContainer().addCommand("dumpUndone", new DumpNotDone());
+        Container.getContainer().addCommand("dumpNotDone", new DumpNotDone());
         Container.getContainer().addCommand("store", new Store());
         Container.getContainer().addCommand("load", new Load());
         Container.getContainer().addCommand("analyze", new Analyze());
