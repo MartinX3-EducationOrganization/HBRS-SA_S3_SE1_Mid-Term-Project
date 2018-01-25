@@ -1,6 +1,5 @@
 package org.bonn.se.ws17.midterm.command;
 
-
 import org.bonn.se.ws17.midterm.dto.UserStoryDTO;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.view.OutputView;

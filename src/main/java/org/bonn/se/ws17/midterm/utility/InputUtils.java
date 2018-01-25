@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputUtils {
-    public static String eingabe() throws Exception {
+    public static String eingabe() {
         UserStory us = new UserStory();
     
         us.setTitel(InputUtils.readText("Geben Sie zunächst einen Titel für ihrer Userstory ein:"));

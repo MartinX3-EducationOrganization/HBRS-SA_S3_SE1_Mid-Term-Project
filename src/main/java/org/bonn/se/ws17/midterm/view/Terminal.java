@@ -19,11 +19,13 @@ public class Terminal {
         Terminal.init();
         
         System.out.print("> ");
+    
         try {
             return Terminal.bufInput.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    
         return null;
     }
 }
