@@ -5,7 +5,6 @@ import org.bonn.se.ws17.midterm.exception.ContainerException;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.view.Terminal;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,7 +68,7 @@ public class InputUtils {
         return Terminal.readLine();
     }
     
-    public static void againUSEnter() throws IOException {
+    public static void againUSEnter() {
         System.out.println("Möchten sie noch eine Userstory eingeben? [Y|N]");
     
         switch (Terminal.readLine().toLowerCase()) {
@@ -83,7 +82,7 @@ public class InputUtils {
             }
             default: {
                 System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");
-                break;
+                InputUtils.againUSEnter();
             }
         }
     }
