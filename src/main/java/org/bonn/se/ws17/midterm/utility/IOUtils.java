@@ -10,34 +10,29 @@ import java.util.List;
 public class IOUtils {
     
     public static void store() {
-        try {
-            try (FileOutputStream fos = new FileOutputStream("UserStoryListe.ser")) {
-                try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                    oos.writeObject(Container.getContainer().getUserStories());
-                    System.out.println(Container.getContainer().size() + " User Stories wurden erfolgreich gespeichert!");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try (FileOutputStream fos = new FileOutputStream("UserStoryListe.ser")) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                oos.writeObject(Container.getContainer().getUserStories(false));
+                System.out.println(String.format("%s User Stories wurden erfolgreich gespeichert!", Container.getContainer().size()));
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
     public static void load() {
-        Container container = Container.getContainer();
-        container.clear();
+        Container.getContainer().clear();
     
         List<UserStory> userStories = null;
-        try {
-            try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {
-                try (ObjectInputStream ois = new ObjectInputStream(in)) {
-                    userStories = (List<UserStory>) (ois.readObject());
-                } catch (EOFException eofe) {
-                    //Fileend reached.
-                }
+        try (FileInputStream in = new FileInputStream("UserStoryListe.ser")) {
+            try (ObjectInputStream ois = new ObjectInputStream(in)) {
+                userStories = (List<UserStory>) (ois.readObject());
+            } catch (EOFException eofe) {
+                //Fileend reached.
+            } catch (ClassNotFoundException e) {
+                System.out.println("Beim laden der Userstories wurde eine unbekannte Klasse gefunden.");
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Fehler beim laden der Userstories.");
             return;
         }
@@ -45,13 +40,13 @@ public class IOUtils {
         if (userStories != null) {
             for (UserStory us : userStories) {
                 try {
-                    container.addUS(us);
+                    Container.getContainer().addUS(us);
                 } catch (ContainerException e) {
                     System.out.println("Fehler beim laden der Userstories.");
                     return;
                 }
             }
-            System.out.println("UserStoires (" + Container.getContainer().size() + ") geladen.");
+            System.out.println(String.format("%s UserStories geladen.", Container.getContainer().size()));
         }
     }
 }

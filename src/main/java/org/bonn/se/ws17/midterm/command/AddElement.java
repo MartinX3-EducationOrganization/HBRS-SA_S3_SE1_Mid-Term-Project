@@ -13,17 +13,12 @@ public class AddElement implements Command {
     
     @Override
     public void execute(String[] params) {
-        int paralength = params.length;
-        if (paralength == 3) {
-            if (params[0].equals("-") && params[1].equals("actor")) {
-                setName(InputUtils.addActor(params[2]));
-                if (name != null) {
-                    Container.getContainer().addHistory(clone());
-                }
-            }
+        setName(InputUtils.addActor(params));
+    
+        if (name != null) {
+            Container.getContainer().addHistory(clone());
         } else {
-            String str = String.join(" ", params);
-            ErrorUtils.cmdNotFound(str);
+            ErrorUtils.cmdNotFound(String.join(" ", params));
         }
     }
     

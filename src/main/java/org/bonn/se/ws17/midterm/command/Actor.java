@@ -1,23 +1,15 @@
 package org.bonn.se.ws17.midterm.command;
 
-import org.bonn.se.ws17.midterm.model.Container;
-
-import java.util.List;
+import org.bonn.se.ws17.midterm.utility.OutputUtils;
 
 public class Actor implements Command {
     @Override
     public void execute(String[] params) {
-        System.out.println("Folgende Akteure sind eingetragen:");
-        List<String> actorList = Container.getContainer().getActors();
-        
-        for (String actor : actorList) {
-            System.out.println(actor);
-        }
+        OutputUtils.listActors();
     }
     
     @Override
     public void undo() {
-    
     }
     
     @Override

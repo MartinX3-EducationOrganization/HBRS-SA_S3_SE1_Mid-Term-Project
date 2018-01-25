@@ -23,12 +23,8 @@ public class Container {
         return Container.container;
     }
     
-    public List<UserStory> getUserStories() {
-        return new ArrayList<>(userStories.values());
-    }
-    
-    public List<UserStory> getUndoneUserStories() {
-        return userStories.values().stream().filter(us -> !us.isDone()).collect(Collectors.toList());
+    public List<UserStory> getUserStories(boolean onlyUndone) {
+        return userStories.values().stream().filter(us -> !onlyUndone || !us.isDone()).collect(Collectors.toList());
     }
     
     public List<String> getActors() {
@@ -56,7 +52,7 @@ public class Container {
         return userStories.containsKey(usid);
     }
     
-    public boolean containsActor(String s) { return actors.stream().anyMatch(x -> x.equals(s)); }
+    public boolean containsActor(String s) { return actors.stream().noneMatch(x -> x.equals(s)); }
     
     public void removeUS(String usid) {
         userStories.remove(usid);

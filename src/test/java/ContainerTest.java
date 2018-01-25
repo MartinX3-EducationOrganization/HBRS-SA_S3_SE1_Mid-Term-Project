@@ -1,5 +1,4 @@
 import org.bonn.se.ws17.midterm.entity.UserStory;
-import org.bonn.se.ws17.midterm.exception.ContainerException;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.OutputUtils;
 import org.junit.After;
@@ -8,17 +7,29 @@ import org.junit.Test;
 
 public class ContainerTest {
     
-    private UserStory us;
+    private UserStory us = new UserStory();
     
     @Before
     public void setUp() throws Exception {
-        us = new UserStory("titel", "basdasd, asdasd, ,, , , , ,asdas .", "dasdasdad asdas a sdas d", "aasdasd dsad asa ds", "easdasd asd asd ", "easdasd", 1, 1, 1, 1, "Student");
-        Container.getContainer().addActor("Student");
+        us.setTitel("titel");
+        us.setEpic("epic");
+        us.setAkzeptanz("akzeptanz");
+        us.setBeschreibung("beschreibung");
+        us.setDetails("Details");
+        us.setMehrwert("mehrwert");
+        us.setAufwand(13);
+        us.setMwert(2);
+        us.setRisiko(3);
+        us.setStrafe(4);
+        us.setActor("Student");
+        us.setDone(false);
+    
+        Container.getContainer().addActor(us.getActor());
         Container.getContainer().addUS(us);
     }
     
     @Test
-    public void testAnalyze() throws ContainerException {
+    public void testAnalyze() {
         OutputUtils.analyze(us.getId());
     }
     

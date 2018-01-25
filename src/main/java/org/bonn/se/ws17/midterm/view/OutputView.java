@@ -9,12 +9,14 @@ public class OutputView implements OutputList {
     @Override
     public void display(List<UserStoryDTO> listDTO) {
         System.out.println("Userstories:");
+    
         Collections.sort(listDTO);
-        for (UserStoryDTO us : listDTO) {
+    
+        listDTO.forEach(us -> {
             System.out.println(us.toString());
             if (listDTO.indexOf(us) != listDTO.size() - 1) {
                 System.out.println("---------------------------------------------------------");
             }
-        }
+        });
     }
 }

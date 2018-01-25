@@ -46,7 +46,7 @@ public class Analyze {
             malus += 5;
         }
     
-        if (us.getActor().equals("") || !Container.getContainer().containsActor(us.getActor())) {
+        if (us.getActor().equals("") || Container.getContainer().containsActor(us.getActor())) {
             malus += 10;
         }
         

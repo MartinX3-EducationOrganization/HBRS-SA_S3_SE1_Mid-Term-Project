@@ -2,31 +2,32 @@ package org.bonn.se.ws17.midterm.view;
 
 
 import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Terminal {
-    private BufferedReader input = null;
+public class Terminal implements Closeable {
+    private final BufferedReader bufInput;
+    private final InputStreamReader input;
     
     public Terminal() {
-        input = new BufferedReader(new InputStreamReader(System.in));
+        input = new InputStreamReader(System.in);
+        bufInput = new BufferedReader(input);
     }
     
-    protected BufferedReader getReader() {
-        return input;
-    }
-    
-    public String readLine(String prompt) {
-        String strInput = null;
-        
-        System.out.print(prompt);
+    public String readLine() {
+        System.out.print("> ");
         try {
-            
-            strInput = input.readLine();
-            
+            return bufInput.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return strInput;
+        return null;
+    }
+    
+    @Override
+    public void close() throws IOException {
+        bufInput.close();
+        input.close();
     }
 }

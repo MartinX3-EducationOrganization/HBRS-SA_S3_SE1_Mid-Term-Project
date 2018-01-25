@@ -9,7 +9,6 @@ import java.util.Arrays;
 
 
 public class Controller {
-    
     public Controller() {
         setupCommands();
     }
@@ -33,14 +32,18 @@ public class Controller {
         Terminal cli = new Terminal();
         while (true) {
             try {
-                strInput = cli.readLine("> ");
+                strInput = cli.readLine();
             } catch (Exception e) {
                 e.printStackTrace();
             }
     
-            String[] strings = strInput.split(" ");
-    
-            Container.getContainer().getCommand(strings[0]).execute(Arrays.copyOfRange(strings, 1, strings.length));
+            String[] strings;
+            if (strInput != null) {
+                strings = strInput.split(" ");
+                if (strings.length > 0) {
+                    Container.getContainer().getCommand(strings[0]).execute(Arrays.copyOfRange(strings, 1, strings.length));
+                }
+            }
         }
     }
 }

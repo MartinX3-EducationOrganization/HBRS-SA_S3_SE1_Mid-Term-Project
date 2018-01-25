@@ -3,6 +3,8 @@ package org.bonn.se.ws17.midterm.command;
 import org.bonn.se.ws17.midterm.model.Container;
 import org.bonn.se.ws17.midterm.utility.InputUtils;
 
+import java.io.IOException;
+
 public class EnterUS implements Command, Cloneable {
     private String usid = "";
     
@@ -20,7 +22,11 @@ public class EnterUS implements Command, Cloneable {
     
         Container.getContainer().addHistory(clone());
     
-        InputUtils.againUSEnter();
+        try {
+            InputUtils.againUSEnter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     @Override
