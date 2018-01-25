@@ -55,8 +55,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     public boolean isDone() { return done; }
     
-    public void setDone(boolean w) { done = w; }
-    
     public int getStrafe() { return strafe; }
     
     public void setStrafe(int s) {
@@ -89,4 +87,10 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     public String toString() {
         return "UserStoryID: " + id + "\n" + "Titel: " + titel + "\n" + "Priorität: " + getPrioritaet();
     }
+    
+    public boolean getDone() {
+        return done;
+    }
+    
+    public void setDone(boolean w) { done = w; }
 }
