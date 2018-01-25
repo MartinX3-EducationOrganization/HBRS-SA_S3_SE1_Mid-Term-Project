@@ -49,7 +49,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     public int getMwert() { return mwert; }
     
-    public void setMwert(int m) throws Exception {
+    public void setMwert(int m) {
         mwert = m;
     }
     
@@ -73,7 +73,7 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     
     public void setAufwand(int a) { aufwand = a; }
     
-    public double getPrioritaet() { return CalcUtils.calcPrio(mwert, strafe, risiko, aufwand); }
+    private double getPrioritaet() { return CalcUtils.calcPrio(mwert, strafe, risiko, aufwand); }
     
     @Override
     public int compareTo(UserStory o) {
