@@ -50,9 +50,6 @@ public class UserStory implements Serializable, Comparable<UserStory> {
     public int getMwert() { return mwert; }
     
     public void setMwert(int m) throws Exception {
-        if (m < 1 || m > 5) {
-            throw new Exception("Der Mehrwert liegt im Bereich 1-5, bitte korrigieren sie ihre Eingabe.");
-        }
         mwert = m;
     }
     

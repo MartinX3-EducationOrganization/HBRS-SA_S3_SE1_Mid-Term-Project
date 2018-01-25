@@ -14,29 +14,27 @@ public class InputUtils {
     public static String eingabe() throws Exception {
         UserStory us = new UserStory();
     
-        try (Terminal t = new Terminal()) {
-            us.setTitel(InputUtils.readText(t, "Geben Sie zunächst einen Titel für ihrer Userstory ein:"));
+        us.setTitel(InputUtils.readText("Geben Sie zunächst einen Titel für ihrer Userstory ein:"));
     
-            us.setActor(InputUtils.readText(t, "Aus welcher Sicht ist die Userstory verfasst? (Akteur)"));
+        us.setActor(InputUtils.readText("Aus welcher Sicht ist die Userstory verfasst? (Akteur)"));
     
-            us.setBeschreibung(InputUtils.readText(t, "Geben Sie eine kurze Beschreibung ihrer Userstory ein:"));
+        us.setBeschreibung(InputUtils.readText("Geben Sie eine kurze Beschreibung ihrer Userstory ein:"));
     
-            us.setDetails(InputUtils.readText(t, "Geben Sie jetzt ihre Details zur Userstory ein:"));
+        us.setDetails(InputUtils.readText("Geben Sie jetzt ihre Details zur Userstory ein:"));
     
-            us.setAkzeptanz(InputUtils.readText(t, "Es folgen die Akzeptanzkriterien ihrer Userstory:"));
+        us.setAkzeptanz(InputUtils.readText("Es folgen die Akzeptanzkriterien ihrer Userstory:"));
     
-            us.setEpic(InputUtils.readText(t, "Unter welcher Epic lässt sich ihre Userstory einordnen?"));
+        us.setEpic(InputUtils.readText("Unter welcher Epic lässt sich ihre Userstory einordnen?"));
     
-            us.setMehrwert(InputUtils.readText(t, "Wie schätzen sie den Mehrwert ein? (schriftlich)"));
+        us.setMehrwert(InputUtils.readText("Wie schätzen sie den Mehrwert ein? (schriftlich)"));
     
-            us.setMwert(InputUtils.readInteger(t, "Welchen Mehrwert schätzen Sie ? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+        us.setMwert(InputUtils.readInteger("Welchen Mehrwert schätzen Sie ? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
     
-            us.setStrafe(InputUtils.readInteger(t, "Welchen Wert hat die Strafe? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+        us.setStrafe(InputUtils.readInteger("Welchen Wert hat die Strafe? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
     
-            us.setRisiko(InputUtils.readInteger(t, "Wie hoch schätzen Sie das Risiko ein? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
+        us.setRisiko(InputUtils.readInteger("Wie hoch schätzen Sie das Risiko ein? (%s)", Arrays.asList(1, 2, 3, 4, 5)));
     
-            us.setAufwand(InputUtils.readInteger(t, "Wie hoch dürfte der Aufwand sein? (%s)", CalcUtils.getFibonacciZahlen()));
-        }
+        us.setAufwand(InputUtils.readInteger("Wie hoch dürfte der Aufwand sein? (%s)", CalcUtils.getFibonacciZahlen()));
         
         try {
             Container.getContainer().addUS(us);
@@ -47,11 +45,11 @@ public class InputUtils {
         return us.getId();
     }
     
-    private static int readInteger(Terminal t, String msg, List<Integer> ints) {
+    private static int readInteger(String msg, List<Integer> ints) {
         int entryInt = 0;
         System.out.println(String.format(msg, String.join(", ", ints.stream().map(Object::toString).collect(Collectors.toList()))));
         
-        String entry = t.readLine();
+        String entry = Terminal.readLine();
         
         try {
             entryInt = Integer.parseInt(entry);
@@ -60,22 +58,21 @@ public class InputUtils {
             }
         } catch (NumberFormatException nfe) {
             System.out.println("Bitte geben sie eine gültige Zahl ein!");
-            InputUtils.readInteger(t, msg, ints);
+            InputUtils.readInteger(msg, ints);
         }
         
         return entryInt;
     }
     
-    private static String readText(Terminal t, String msg) {
+    private static String readText(String msg) {
         System.out.println(msg);
-        return t.readLine();
+        return Terminal.readLine();
     }
     
     public static void againUSEnter() throws IOException {
         System.out.println("Möchten sie noch eine Userstory eingeben? [Y|N]");
-        
-        try (Terminal t = new Terminal()) {
-            switch (t.readLine().toLowerCase()) {
+    
+        switch (Terminal.readLine().toLowerCase()) {
                 case "y": {
                     Container.getContainer().getCommand("enter").execute(null);
                     break;
@@ -89,7 +86,6 @@ public class InputUtils {
                     break;
                 }
             }
-        }
     }
     
     public static String addActor(String[] params) {
