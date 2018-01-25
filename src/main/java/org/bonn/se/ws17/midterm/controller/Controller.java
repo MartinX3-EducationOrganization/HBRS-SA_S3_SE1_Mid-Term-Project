@@ -29,8 +29,11 @@ public class Controller {
     
     public void anfang() {
         OutputUtils.welcome();
+    
         String strInput = null;
+    
         Terminal cli = new Terminal();
+    
         while (true) {
             try {
                 strInput = cli.readLine();
@@ -41,6 +44,7 @@ public class Controller {
             String[] strings;
             if (strInput != null) {
                 strings = strInput.split(" ");
+    
                 if (strings.length > 0) {
                     Container.getContainer().getCommand(strings[0]).execute(Arrays.copyOfRange(strings, 1, strings.length));
                 }
