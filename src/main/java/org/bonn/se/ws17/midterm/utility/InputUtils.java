@@ -73,19 +73,19 @@ public class InputUtils {
         System.out.println("Möchten sie noch eine Userstory eingeben? [Y|N]");
     
         switch (Terminal.readLine().toLowerCase()) {
-                case "y": {
-                    Container.getContainer().getCommand("enter").execute(null);
-                    break;
-                }
-                case "n": {
-                    System.out.println("Sie befinden sich wieder im Menü. Für Hilfe zu den Befehlen geben sie bitte " + "\"" + "help" + "\"" + " ein");
-                    break;
-                }
-                default: {
-                    System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");
-                    break;
-                }
+            case "y": {
+                Container.getContainer().getCommand("enter").execute(null);
+                break;
             }
+            case "n": {
+                System.out.println("Sie befinden sich wieder im Menü. Für Hilfe zu den Befehlen geben sie bitte " + "\"" + "help" + "\"" + " ein");
+                break;
+            }
+            default: {
+                System.out.println("Bitte geben sie " + "\"" + "y" + "\"" + " für Ja, oder " + "\"" + "n" + "\"" + " für Nein ein.");
+                break;
+            }
+        }
     }
     
     public static String addActor(String[] params) {
