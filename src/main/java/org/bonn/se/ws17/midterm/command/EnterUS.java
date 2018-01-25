@@ -5,7 +5,7 @@ import org.bonn.se.ws17.midterm.utility.InputUtils;
 
 import java.io.IOException;
 
-public class EnterUS implements Command, Cloneable {
+public class EnterUS implements Command {
     private String usid = "";
     
     private void setUsid(String usid) {
