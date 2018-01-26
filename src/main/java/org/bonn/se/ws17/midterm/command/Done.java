@@ -1,7 +1,7 @@
 package org.bonn.se.ws17.midterm.command;
 
 import org.bonn.se.ws17.midterm.model.Container;
-import org.bonn.se.ws17.midterm.utility.AnalyzeUtils;
+import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.AnalyzeUtils;
 import org.bonn.se.ws17.midterm.utility.ErrorUtils;
 
 public class Done implements Command {

@@ -1,11 +1,14 @@
 package org.bonn.se.ws17.midterm.command;
 
-import org.bonn.se.ws17.midterm.utility.AnalyzeUtils;
+import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.AnalyzeUtils;
+import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.Strategy;
 
 public class Analyze implements Command {
     @Override
     public void execute(String[] params) {
-        AnalyzeUtils.analyze(params);
+        Strategy strategie = new Strategy();
+        strategie.setStrategy(new AnalyzeUtils());
+        strategie.analyze(params);
     }
     
     @Override

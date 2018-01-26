@@ -1,12 +1,13 @@
-package org.bonn.se.ws17.midterm.utility;
+package org.bonn.se.ws17.midterm.utility.AnalyzeStrategy;
 
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
+import org.bonn.se.ws17.midterm.utility.ErrorUtils;
 
 import java.util.List;
 import java.util.UUID;
 
-public class AnalyzeUtils {
+public class AnalyzeUtils implements AnalyzeInterface {
     private static int bewertung(UserStory us) {
         return 100 - AnalyzeUtils.malus(us);
     }
@@ -192,7 +193,19 @@ public class AnalyzeUtils {
         return true;
     }
     
-    public static void analyze(String[] params) {
+    public static boolean isNotUUID(String usid) {
+        try {
+            UUID.fromString(usid);
+            return false;
+        } catch (IllegalArgumentException iae) {
+            System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
+            System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
+            return true;
+        }
+    }
+    
+    @Override
+    public void analyze(String[] params) {
         if (params == null) {
             params = new String[0];
         }
@@ -252,16 +265,5 @@ public class AnalyzeUtils {
         }
         
         ErrorUtils.cmdNotFound(String.join(" ", params));
-    }
-    
-    public static boolean isNotUUID(String usid) {
-        try {
-            UUID.fromString(usid);
-            return false;
-        } catch (IllegalArgumentException iae) {
-            System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
-            System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
-            return true;
-        }
     }
 }

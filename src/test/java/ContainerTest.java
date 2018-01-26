@@ -1,6 +1,5 @@
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
-import org.bonn.se.ws17.midterm.utility.AnalyzeUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class ContainerTest {
     
     @Test
     public void testAnalyze() {
-        AnalyzeUtils.analyze(String.format("%s", us.getId()).split(" "));
+    
     }
     
     @After
