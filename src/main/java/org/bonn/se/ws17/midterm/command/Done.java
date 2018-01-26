@@ -10,7 +10,7 @@ public class Done implements Command {
     
     @Override
     public void execute(String[] params) {
-        if (!OutputUtils.isUUID(params[0])) {
+        if (OutputUtils.isNotUUID(params[0])) {
             ErrorUtils.cmdNotFound(String.join(" ", params));
             return;
         }

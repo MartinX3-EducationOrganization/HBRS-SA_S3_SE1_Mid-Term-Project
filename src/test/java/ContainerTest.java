@@ -30,7 +30,7 @@ public class ContainerTest {
     
     @Test
     public void testAnalyze() {
-        OutputUtils.analyze(us.getId());
+        OutputUtils.analyze(String.format("%s", us.getId()).split(" "));
     }
     
     @After

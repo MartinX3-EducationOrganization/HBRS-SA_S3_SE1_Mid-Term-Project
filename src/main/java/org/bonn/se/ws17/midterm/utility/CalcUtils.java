@@ -16,10 +16,6 @@ public class CalcUtils {
         return ((double) (mehrwert + strafe)) / ((double) (aufwand + risiko));
     }
     
-    public static boolean checkFibonacci(int aufwandInt) {
-        return CalcUtils.fibonacciZahlen.contains(aufwandInt);
-    }
-    
     public static int bewertung(UserStory us) {
         return 100 - AnalyzeUtils.malus(us);
     }

@@ -7,31 +7,95 @@ import java.util.List;
 import java.util.UUID;
 
 public class OutputUtils {
-    
-    public static void welcome() {
-        System.out.println("Willkommen im UserStory-Programm:");
-        System.out.println("Hier können UserStories eingegeben werden, " + "\n" + "UserStories-Listen gespeichert, geladen und angezeigt werden.");
-        System.out.println("Für Hilfe der Kommandos, geben Sie bitte " + "'help'" + " ein.");
+    public static void analyze(String[] params) {
+        if (params == null) {
+            params = new String[0];
+        }
+        
+        if (params.length > 0) {
+            if (params.length != 2) {
+                if (OutputUtils.isNotUUID(params[0])) {
+                    ErrorUtils.cmdNotFound(String.join(" ", params));
+                    return;
+                }
+            }
+            
+            if (params.length != 1 && params.length != 2) {
+                if (params[1].equals("-")) {
+                    ErrorUtils.cmdNotFound(String.join(" ", params));
+                    return;
+                }
+            }
+        }
+        
+        switch (params.length) {
+            case 1: {
+                // Wenn nur id
+                OutputUtils.analyze(params[0]);
+                break;
+            }
+            case 2: {
+                // Wenn - all
+                if (params[0].equals("-") && params[1].equals("all")) {
+                    OutputUtils.analyzeAll();
+                    return;
+                }
+                break;
+            }
+            case 3: {
+                // Wenn id - details
+                OutputUtils.analyze(params[0]);
+                if (params[2].equals("details")) {
+                    OutputUtils.detailsAnalyze(params[0]);
+                    return;
+                }
+                break;
+            }
+            case 4: {
+                // Wenn id - details
+                OutputUtils.analyze(params[0]);
+                if (params[2].equals("details")) {
+                    OutputUtils.detailsAnalyze(params[0]);
+                    return;
+                }
+                break;
+            }
+            case 5: {
+                // Wenn id - details - hints
+                OutputUtils.analyze(params[0]);
+                if (params[2].equals("details")) {
+                    OutputUtils.detailsAnalyze(params[0]);
+                    
+                    if (params[3].equals("-") && params[4].equals("hints")) {
+                        OutputUtils.hintsAnalyze(params[0]);
+                    }
+                    return;
+                }
+                break;
+            }
+        }
+        
+        ErrorUtils.cmdNotFound(String.join(" ", params));
     }
     
-    public static void analyze(String usid) {
+    public static boolean isNotUUID(String usid) {
+        try {
+            UUID.fromString(usid);
+            return false;
+        } catch (IllegalArgumentException iae) {
+            System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
+            System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
+            return true;
+        }
+    }
+    
+    private static void analyze(String usid) {
         if (Container.getContainer().containsUS(usid)) {
             int punkte = CalcUtils.bewertung(Container.getContainer().getUS(usid));
             System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", usid));
             System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
         } else {
             System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", usid));
-        }
-    }
-    
-    public static boolean isUUID(String usid) {
-        try {
-            UUID.fromString(usid);
-            return true;
-        } catch (IllegalArgumentException iae) {
-            System.out.println(String.format("Die eingegebene ID [%s] entspricht nicht dem UUID-Standard", usid));
-            System.out.println("Geben sie 'analyze' 'UUID' erneut ein.");
-            return false;
         }
     }
     
@@ -102,82 +166,17 @@ public class OutputUtils {
         return true;
     }
     
+    public static void welcome() {
+        System.out.println("Willkommen im UserStory-Programm:");
+        System.out.println("Hier können UserStories eingegeben werden, " + "\n" + "UserStories-Listen gespeichert, geladen und angezeigt werden.");
+        System.out.println("Für Hilfe der Kommandos, geben Sie bitte " + "'help'" + " ein.");
+    }
+    
     public static void listActors() {
         System.out.println("Folgende Akteure sind eingetragen:");
         
         for (String actor : Container.getContainer().getActors()) {
             System.out.println(actor);
         }
-    }
-    
-    public static void analyze(String[] params) {
-        if (params == null) {
-            params = new String[0];
-        }
-        
-        if (params.length > 0) {
-            if (params.length != 2) {
-                if (!OutputUtils.isUUID(params[0])) {
-                    ErrorUtils.cmdNotFound(String.join(" ", params));
-                    return;
-                }
-            }
-            
-            if (params.length != 1 && params.length != 2) {
-                if (params[1].equals("-")) {
-                    ErrorUtils.cmdNotFound(String.join(" ", params));
-                    return;
-                }
-            }
-        }
-        
-        switch (params.length) {
-            case 1: {
-                // Wenn nur id
-                OutputUtils.analyze(params[0]);
-                break;
-            }
-            case 2: {
-                // Wenn - all
-                if (params[0].equals("-") && params[1].equals("all")) {
-                    OutputUtils.analyzeAll();
-                    return;
-                }
-                break;
-            }
-            case 3: {
-                // Wenn id - details
-                OutputUtils.analyze(params[0]);
-                if (params[2].equals("details")) {
-                    OutputUtils.detailsAnalyze(params[0]);
-                    return;
-                }
-                break;
-            }
-            case 4: {
-                // Wenn id - details
-                OutputUtils.analyze(params[0]);
-                if (params[2].equals("details")) {
-                    OutputUtils.detailsAnalyze(params[0]);
-                    return;
-                }
-                break;
-            }
-            case 5: {
-                // Wenn id - details - hints
-                OutputUtils.analyze(params[0]);
-                if (params[2].equals("details")) {
-                    OutputUtils.detailsAnalyze(params[0]);
-                    
-                    if (params[3].equals("-") && params[4].equals("hints")) {
-                        OutputUtils.hintsAnalyze(params[0]);
-                    }
-                    return;
-                }
-                break;
-            }
-        }
-        
-        ErrorUtils.cmdNotFound(String.join(" ", params));
     }
 }
