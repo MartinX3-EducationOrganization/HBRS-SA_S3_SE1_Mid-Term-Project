@@ -237,20 +237,11 @@ public class AnalyzeUtils {
                 break;
             }
             case 4: {
-                // Wenn id - details
-                AnalyzeUtils.analyze(params[0]);
-                if (params[2].equals("details")) {
-                    AnalyzeUtils.detailsAnalyze(params[0]);
-                    return;
-                }
-                break;
-            }
-            case 5: {
                 // Wenn id - details - hints
                 AnalyzeUtils.analyze(params[0]);
                 if (params[2].equals("details")) {
                     AnalyzeUtils.detailsAnalyze(params[0]);
-                    
+    
                     if (params[3].equals("-") && params[4].equals("hints")) {
                         AnalyzeUtils.hintsAnalyze(params[0]);
                     }
