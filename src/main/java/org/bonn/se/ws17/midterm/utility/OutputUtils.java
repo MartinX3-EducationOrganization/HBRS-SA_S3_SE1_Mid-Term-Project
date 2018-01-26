@@ -6,8 +6,6 @@ import org.bonn.se.ws17.midterm.model.Container;
 import java.util.List;
 import java.util.UUID;
 
-import static org.bonn.se.ws17.midterm.analyze.Analyze.countWords;
-
 public class OutputUtils {
     
     public static void welcome() {
@@ -83,7 +81,7 @@ public class OutputUtils {
             System.out.println(emptyWarning);
             
             return false;
-        } else if (countWords(titel) > maxWordCount) {
+        } else if (titel.split(" ").length > maxWordCount) {
             System.out.println(wordCountWarning);
             
             return false;
