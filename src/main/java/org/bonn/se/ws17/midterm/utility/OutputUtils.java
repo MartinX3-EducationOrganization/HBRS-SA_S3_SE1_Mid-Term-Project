@@ -91,9 +91,9 @@ public class OutputUtils {
     
     private static void analyze(String usid) {
         if (Container.getContainer().containsUS(usid)) {
-            int punkte = CalcUtils.bewertung(Container.getContainer().getUS(usid));
+            int punkte = AnalyzeUtils.bewertung(Container.getContainer().getUS(usid));
             System.out.println(String.format("Die Userstory mit der ID [%s] hat folgende Qualität:", usid));
-            System.out.println(String.format("%d%s (%s)", punkte, "%", CalcUtils.note(punkte)));
+            System.out.println(String.format("%d%s (%s)", punkte, "%", AnalyzeUtils.note(punkte)));
         } else {
             System.out.println(String.format("Die Userstory mit der ID [%s] wurde nicht gefunden", usid));
         }
@@ -102,11 +102,11 @@ public class OutputUtils {
     private static void analyzeAll() {
         int bewertung;
         List<UserStory> list = Container.getContainer().getUserStories(false);
-        
-        bewertung = list.stream().mapToInt(CalcUtils::bewertung).sum();
+    
+        bewertung = list.stream().mapToInt(AnalyzeUtils::bewertung).sum();
         
         System.out.println(String.format("Ihr(e) %d User-Stories haben durchschnittlich folgende Qualität:", Container.getContainer().size()));
-        System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", CalcUtils.note(bewertung / list.size())));
+        System.out.println(String.format("%d%s (%s)", bewertung / list.size(), "%", AnalyzeUtils.note(bewertung / list.size())));
     }
     
     private static void detailsAnalyze(String uuid) {

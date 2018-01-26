@@ -4,8 +4,24 @@ import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;
 
 public class AnalyzeUtils {
+    public static int bewertung(UserStory us) {
+        return 100 - AnalyzeUtils.malus(us);
+    }
     
-    public static int malus(UserStory us) {
+    public static String note(int punkte) {
+        if (punkte == 100) {
+            return "Sehr gut";
+        }
+        if (punkte >= 50) {
+            return "Gut";
+        }
+        if (punkte >= 25) {
+            return "Nicht gut";
+        }
+        return "Schlecht";
+    }
+    
+    private static int malus(UserStory us) {
         return AnalyzeUtils.missing(us) + AnalyzeUtils.bandwurmMalus(us);
     }
     
