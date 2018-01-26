@@ -1,6 +1,5 @@
 package org.bonn.se.ws17.midterm.utility;
 
-import org.bonn.se.ws17.midterm.analyze.Analyze;
 import org.bonn.se.ws17.midterm.entity.UserStory;
 
 import java.util.Arrays;
@@ -10,7 +9,7 @@ public class CalcUtils {
     private static final List<Integer> fibonacciZahlen = Arrays.asList(1, 2, 3, 5, 8, 13, 20, 35, 50);
     
     public static List<Integer> getFibonacciZahlen() {
-        return fibonacciZahlen;
+        return CalcUtils.fibonacciZahlen;
     }
     
     public static double calcPrio(int mehrwert, int strafe, int risiko, int aufwand) {
@@ -18,11 +17,11 @@ public class CalcUtils {
     }
     
     public static boolean checkFibonacci(int aufwandInt) {
-        return fibonacciZahlen.contains(aufwandInt);
+        return CalcUtils.fibonacciZahlen.contains(aufwandInt);
     }
     
     public static int bewertung(UserStory us) {
-        return 100 - Analyze.malus(us);
+        return 100 - AnalyzeUtils.malus(us);
     }
     
     public static String note(int punkte) {
