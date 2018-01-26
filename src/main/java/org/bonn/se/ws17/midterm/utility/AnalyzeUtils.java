@@ -217,7 +217,7 @@ public class AnalyzeUtils {
             case 1: {
                 // Wenn nur id
                 AnalyzeUtils.analyze(params[0]);
-                break;
+                return;
             }
             case 2: {
                 // Wenn - all
