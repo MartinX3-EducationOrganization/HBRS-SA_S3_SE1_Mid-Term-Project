@@ -1,8 +1,8 @@
 package org.bonn.se.ws17.midterm.command;
 
 import org.bonn.se.ws17.midterm.model.Container;
-import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.AnalyzeUtils;
 import org.bonn.se.ws17.midterm.utility.ErrorUtils;
+import org.bonn.se.ws17.midterm.utility.strategyAnalyze.AnalyzeUtils;
 
 public class Done implements Command {
     private boolean oldDoneValue;

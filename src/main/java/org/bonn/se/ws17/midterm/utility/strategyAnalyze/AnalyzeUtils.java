@@ -1,4 +1,4 @@
-package org.bonn.se.ws17.midterm.utility.AnalyzeStrategy;
+package org.bonn.se.ws17.midterm.utility.strategyAnalyze;
 
 import org.bonn.se.ws17.midterm.entity.UserStory;
 import org.bonn.se.ws17.midterm.model.Container;

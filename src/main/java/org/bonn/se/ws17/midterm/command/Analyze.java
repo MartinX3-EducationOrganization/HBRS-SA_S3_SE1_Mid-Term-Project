@@ -1,7 +1,7 @@
 package org.bonn.se.ws17.midterm.command;
 
-import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.AnalyzeUtils;
-import org.bonn.se.ws17.midterm.utility.AnalyzeStrategy.Strategy;
+import org.bonn.se.ws17.midterm.utility.strategyAnalyze.AnalyzeUtils;
+import org.bonn.se.ws17.midterm.utility.strategyAnalyze.Strategy;
 
 public class Analyze implements Command {
     @Override
