@@ -22,7 +22,7 @@ public class ContainerTest {
         us.setStrafe(4);
         us.setActor("Student");
         us.setDone(false);
-        
+    
         Container.getContainer().addActor(us.getActor());
         Container.getContainer().addUS(us);
     }
