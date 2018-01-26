@@ -204,8 +204,8 @@ public class AnalyzeUtils {
                     return;
                 }
             }
-            
-            if (params.length != 1 && params.length != 2) {
+    
+            if (params.length != 1 && params.length != 3 && params.length != 5) {
                 if (params[1].equals("-")) {
                     ErrorUtils.cmdNotFound(String.join(" ", params));
                     return;
@@ -236,7 +236,7 @@ public class AnalyzeUtils {
                 }
                 break;
             }
-            case 4: {
+            case 5: {
                 // Wenn id - details - hints
                 AnalyzeUtils.analyze(params[0]);
                 if (params[2].equals("details")) {
