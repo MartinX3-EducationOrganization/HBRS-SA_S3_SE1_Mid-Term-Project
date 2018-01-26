@@ -1,8 +1,8 @@
 package org.bonn.se.ws17.midterm.command;
 
 import org.bonn.se.ws17.midterm.model.Container;
+import org.bonn.se.ws17.midterm.utility.AnalyzeUtils;
 import org.bonn.se.ws17.midterm.utility.ErrorUtils;
-import org.bonn.se.ws17.midterm.utility.OutputUtils;
 
 public class Done implements Command {
     private boolean oldDoneValue;
@@ -10,7 +10,7 @@ public class Done implements Command {
     
     @Override
     public void execute(String[] params) {
-        if (OutputUtils.isNotUUID(params[0])) {
+        if (AnalyzeUtils.isNotUUID(params[0])) {
             ErrorUtils.cmdNotFound(String.join(" ", params));
             return;
         }

@@ -1,11 +1,11 @@
 package org.bonn.se.ws17.midterm.command;
 
-import org.bonn.se.ws17.midterm.utility.OutputUtils;
+import org.bonn.se.ws17.midterm.utility.AnalyzeUtils;
 
 public class Analyze implements Command {
     @Override
     public void execute(String[] params) {
-        OutputUtils.analyze(params);
+        AnalyzeUtils.analyze(params);
     }
     
     @Override
